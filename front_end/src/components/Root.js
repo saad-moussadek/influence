@@ -13,11 +13,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AppIcon from '@material-ui/icons/InsertChartOutlined';
 import config from '../config/config'
 
-import { tabs } from './Tabs';
+import { DrawerTabs } from './DrawerTabs';
 import App from "../App";
 import Route from "react-router/es/Route";
 import Router from "react-router/es/Router";
-import MyDashboard from "./pages/myDashboard";
+import MyDashboard from "./pages/MyDashboard";
 import {HashRouter, Redirect, Switch} from "react-router-dom";
 import routes from "../config/routes";
 
@@ -79,7 +79,9 @@ class Root extends React.Component {
             <div>
                 <div className={classes.toolbar} />
                 <Divider />
-                <List>{tabs}</List>
+                <List>
+                    <DrawerTabs classes={classes} theme={theme}/>
+                </List>
             </div>
         );
 

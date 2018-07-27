@@ -16,16 +16,11 @@ import Divider from "@material-ui/core/es/Divider/Divider";
 import {withStyles} from "@material-ui/core/styles/index";
 
 
-const styles = theme => ({
-    toolbar: theme.mixins.toolbar,
-});
-
-const {classes, theme} = this.props;
-
-class DrawerTabs extends React.Component {
+export class DrawerTabs extends React.Component {
     render() {
+        const {classes, theme} = this.props;
         return (
-            <div className={classes.toolbar}>
+            <div theme="theme">
                 {routes.map((prop, key) => {
                     let fontSize = 10;
                     if (!prop.redirect && !prop.separator) {
@@ -53,5 +48,3 @@ DrawerTabs.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
 };
-
-export default withStyles(styles, { withTheme: true })(DrawerTabs);
