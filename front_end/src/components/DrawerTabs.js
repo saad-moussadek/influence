@@ -15,12 +15,53 @@ import {NavLink} from "react-router-dom";
 import Divider from "@material-ui/core/es/Divider/Divider";
 import {withStyles} from "@material-ui/core/styles/index";
 
+const drawerWidth = 300;
 
-export class DrawerTabs extends React.Component {
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+        zIndex: 1,
+        overflow: 'hidden',
+        position: 'relative',
+        display: 'flex',
+        width: '100%',
+    },
+    icon: {
+        margin: theme.spacing.unit,
+        fontSize: 32,
+    },
+    appBar: {
+        position: 'absolute',
+        marginLeft: drawerWidth,
+        // [theme.breakpoints.up('md')]: {
+        //     width: `calc(100% - ${drawerWidth}px)`,
+        // },
+        zIndex: theme.zIndex.drawer + 1,
+    },
+    navIconHide: {
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        },
+    },
+    toolbar: theme.mixins.toolbar,
+    drawerPaper: {
+        width: drawerWidth,
+        [theme.breakpoints.up('md')]: {
+            position: 'relative',
+        },
+    },
+    content: {
+        flexGrow: 1,
+        backgroundColor: theme.palette.background.default,
+        padding: theme.spacing.unit * 3,
+    },
+});
+
+class DrawerTabs extends React.Component {
     render() {
         const {classes, theme} = this.props;
         return (
-            <div theme="theme">
+            <div>
                 {routes.map((prop, key) => {
                     let fontSize = 10;
                     if (!prop.redirect && !prop.separator) {
@@ -48,3 +89,5 @@ DrawerTabs.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
 };
+
+export default withStyles(styles, { withTheme: true })(DrawerTabs);

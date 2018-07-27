@@ -13,7 +13,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AppIcon from '@material-ui/icons/InsertChartOutlined';
 import config from '../config/config'
 
-import { DrawerTabs } from './DrawerTabs';
+import DrawerTabs from './DrawerTabs';
 import App from "../App";
 import Route from "react-router/es/Route";
 import Router from "react-router/es/Router";
@@ -80,7 +80,7 @@ class Root extends React.Component {
                 <div className={classes.toolbar} />
                 <Divider />
                 <List>
-                    <DrawerTabs classes={classes} theme={theme}/>
+                    <DrawerTabs />
                 </List>
             </div>
         );
