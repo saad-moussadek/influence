@@ -37,7 +37,7 @@ const styles = theme => ({
         fontSize: 32,
     },
     appBar: {
-        position: 'absolute',
+        position: 'fixed',
         marginLeft: drawerWidth,
         // [theme.breakpoints.up('md')]: {
         //     width: `calc(100% - ${drawerWidth}px)`,

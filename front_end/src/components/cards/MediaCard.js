@@ -14,6 +14,7 @@ import Grid from "@material-ui/core/es/Grid/Grid";
 import Paper from "@material-ui/core/es/Paper/Paper";
 import CardActions from "@material-ui/core/es/CardActions/CardActions";
 import Button from "@material-ui/core/es/Button/Button";
+
 const styles = {
     card: {
         // minWidth: 275,
@@ -38,38 +39,36 @@ const styles = {
     pos: {
         marginBottom: 12,
     },
+    grid: {
+        paddingTop: 20,
+    }
 };
 
-function MediaControlCard (props) {
-    const { classes, media } = props;
-    const bull = <span className={classes.bullet}>•</span>;
+function MediaControlCard(props) {
+    const {classes, media} = props;
 
     return (
         <div>
+            <Typography className={classes.title} color="textSecondary">
+                {"Uploaded on " + media.data[media.data.length - 1].date.toDateString()}
+            </Typography>
             <Card className={classes.card}>
                 <CardMedia
                     className={classes.cover}
                     image={media.imageURL}
                     title="Live from space album cover"
                 />
-                <CardContent className={classes.details}>
-                    <Typography className={classes.title} color="textSecondary">
-                        {media.data[media.data.length-1].date.toString()}
-                    </Typography>
-                    <Typography variant="headline" component="h2">
-                        be{bull}nev{bull}o{bull}lent
-                    </Typography>
-                    <Typography className={classes.pos} color="textSecondary">
-                        adjective
-                    </Typography>
-                    <Typography component="p">
-                        well meaning and kindly.<br />
-                        {'"a benevolent smile"'}
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    <Button size="small">Learn More</Button>
-                </CardActions>
+                <Grid container spacing={24} className={classes.grid}>
+                    <Grid item md={4} xs={12}>
+                        <TinyLineChart data={media.data} graph={"like_count"} color={"blue"}/>
+                    </Grid>
+                    <Grid item md={4} xs={12}>
+                        <TinyLineChart data={media.data} graph={"comments_count"} color={"green"}/>
+                    </Grid>
+                    <Grid item md={4} xs={12}>
+                        <TinyLineChart data={media.data} graph={"comments_count"} color={"red"}/>
+                    </Grid>
+                </Grid>
             </Card>
         </div>
     );

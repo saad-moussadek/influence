@@ -6,24 +6,28 @@ const media = [
         caption: "This is a caption #caption #photo",
         data: [
             {
-                comments_count: 35,
-                like_count: 1750,
+                comments_count: 0,
+                like_count: 0,
                 date: new Date(),
-            },
-            {
-                comments_count: 30,
-                like_count: 1500,
-                date: new Date() - 10,
+                day: new Date().getDay(),
             },
             {
                 comments_count: 20,
                 like_count: 1000,
-                date: new Date() - 20,
+                date: new Date(),
+                day: new Date().getDay(),
             },
             {
-                comments_count: 0,
-                like_count: 0,
-                date: new Date() - 30,
+                comments_count: 30,
+                like_count: 1500,
+                date: new Date(),
+                day: new Date().getDay(),
+            },
+            {
+                comments_count: 35,
+                like_count: 1750,
+                date: new Date(),
+                day: new Date().getDay(),
             },
         ]
     },
@@ -32,24 +36,28 @@ const media = [
         caption: "This is a caption #caption #photo",
         data: [
             {
-                comments_count: 35,
-                like_count: 1750,
+                comments_count: 0,
+                like_count: 0,
                 date: new Date(),
-            },
-            {
-                comments_count: 30,
-                like_count: 1500,
-                date: new Date() - 10,
+                day: new Date().getDay(),
             },
             {
                 comments_count: 20,
                 like_count: 1000,
-                date: new Date() - 20,
+                date: new Date(),
+                day: new Date().getDay(),
             },
             {
-                comments_count: 0,
-                like_count: 0,
-                date: new Date() - 30,
+                comments_count: 30,
+                like_count: 1500,
+                date: new Date(),
+                day: new Date().getDay(),
+            },
+            {
+                comments_count: 35,
+                like_count: 1750,
+                date: new Date(),
+                day: new Date().getDay(),
             },
         ]
     },
@@ -58,24 +66,28 @@ const media = [
         caption: "This is a caption #caption #photo",
         data: [
             {
-                comments_count: 35,
-                like_count: 1750,
+                comments_count: 0,
+                like_count: 0,
                 date: new Date(),
-            },
-            {
-                comments_count: 30,
-                like_count: 1500,
-                date: new Date() - 10,
+                day: new Date().getDay(),
             },
             {
                 comments_count: 20,
                 like_count: 1000,
-                date: new Date() - 20,
+                date: new Date(),
+                day: new Date().getDay(),
             },
             {
-                comments_count: 0,
-                like_count: 0,
-                date: new Date() - 30,
+                comments_count: 30,
+                like_count: 1500,
+                date: new Date(),
+                day: new Date().getDay(),
+            },
+            {
+                comments_count: 35,
+                like_count: 1750,
+                date: new Date(),
+                day: new Date().getDay(),
             },
         ]
     },
