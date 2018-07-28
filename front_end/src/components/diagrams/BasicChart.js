@@ -37,6 +37,8 @@ BasicChart.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
+    graph: PropTypes.object.isRequired,
+    color: PropTypes.object.isRequired,
 };
 
 export default withTheme()(BasicChart);

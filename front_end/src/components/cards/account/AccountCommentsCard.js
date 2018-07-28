@@ -21,7 +21,7 @@ import CommentIcon from '@material-ui/icons/Comment'
 import IncreaseIcon from '@material-ui/icons/ArrowDropUp'
 import DecreaseIcon from '@material-ui/icons/ArrowDropDown'
 import config from '../../../config/config'
-import BasicChart from '../../diagrams/chartTest'
+import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
 import Chip from "@material-ui/core/es/Chip/Chip";
 

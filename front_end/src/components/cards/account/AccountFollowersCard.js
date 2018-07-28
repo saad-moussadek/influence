@@ -20,7 +20,7 @@ import AssistantIcon from '@material-ui/icons/Assistant'
 import IncreaseIcon from '@material-ui/icons/ArrowDropUp'
 import DecreaseIcon from '@material-ui/icons/ArrowDropDown'
 import FollowersIcon from '@material-ui/icons/Contacts'
-import BasicChart from '../../diagrams/chartTest'
+import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
 
 const styles = theme => ({

@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
-import TinyLineChart from "../../diagrams/chartTest";
+import TinyLineChart from "../../diagrams/BasicChart";
 import Grid from "@material-ui/core/es/Grid/Grid";
 import Paper from "@material-ui/core/es/Paper/Paper";
 import CardActions from "@material-ui/core/es/CardActions/CardActions";
