@@ -17,7 +17,7 @@ import withTheme from "@material-ui/core/es/styles/withTheme";
 
 class BasicChart extends React.Component {
     render () {
-        let {data, graph, color} = this.props;
+        let {data, graph, graph2, color, color2} = this.props;
         return (
             <ResponsiveContainer width={"100%"} height={200}>
                 <LineChart width={600} height={300} data={data}
@@ -26,6 +26,7 @@ class BasicChart extends React.Component {
                     <CartesianGrid strokeDasharray="3 3"/>
                     <Tooltip/>
                     <Line type="monotone" dataKey={graph} stroke={color} strokeWidth={2.5} />
+                    <Line type="monotone" dataKey={graph2} stroke={color2} strokeWidth={2} />
                 </LineChart>
             </ResponsiveContainer>
         );

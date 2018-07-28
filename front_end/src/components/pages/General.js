@@ -8,9 +8,9 @@ import {withStyles} from "@material-ui/core/styles/index";
 import Paper from "@material-ui/core/es/Paper/Paper";
 import Grid from "@material-ui/core/es/Grid/Grid";
 import withTheme from "@material-ui/core/es/styles/withTheme";
-import AccountFollowersCard from "../cards/AccountFollowersCard";
-import AccountLikesCard from "../cards/AccountLikesCard";
-import AccountCommentsCard from "../cards/AccountCommentsCard";
+import AccountFollowersCard from "../cards/account/AccountFollowersCard";
+import AccountLikesCard from "../cards/account/AccountLikesCard";
+import AccountCommentsCard from "../cards/account/AccountCommentsCard";
 
 const styles = theme => ({
     root: {

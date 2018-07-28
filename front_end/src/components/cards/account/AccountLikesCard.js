@@ -16,11 +16,11 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import AssistantIcon from '@material-ui/icons/Assistant'
 import IncreaseIcon from '@material-ui/icons/ArrowDropUp'
 import DecreaseIcon from '@material-ui/icons/ArrowDropDown'
-import FollowersIcon from '@material-ui/icons/Contacts'
-import BasicChart from '../diagrams/chartTest'
+import AssistantIcon from '@material-ui/icons/Assistant'
+import ThumbsUpIcon from '@material-ui/icons/ThumbUp'
+import BasicChart from '../../diagrams/chartTest'
 import green from "@material-ui/core/es/colors/green";
 
 const styles = theme => ({
@@ -61,13 +61,13 @@ const styles = theme => ({
 class AccountFollowersCard extends React.Component {
     render() {
         const {classes, theme, accountData} = this.props;
-        let growth = 0.1 * (-1000 + Math.round(1000 * (accountData[accountData.length - 1].followers_count / accountData[accountData.length - 2].followers_count)));
+        let growth = 0.1 * (-1000 + Math.round(1000 * (accountData[accountData.length - 1].like_count / accountData[accountData.length - 2].like_count)));
         let avatar;
         let growthIndicator;
         if (growth > 0) {
             avatar = (
                 <Avatar className={classes.avatarGreen}>
-                    <FollowersIcon/>
+                    <ThumbsUpIcon/>
                 </Avatar>
             );
             growthIndicator = (
@@ -77,7 +77,7 @@ class AccountFollowersCard extends React.Component {
         else {
             avatar = (
                 <Avatar className={classes.avatarRed}>
-                    <FollowersIcon/>
+                    <ThumbsUpIcon/>
                 </Avatar>
             );
             growthIndicator = (
@@ -95,14 +95,14 @@ class AccountFollowersCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={accountData[accountData.length - 1].followers_count + " followers"}
+                        title={accountData[accountData.length - 1].followers_count + " likes"}
                         subheader={
                             <div>
                                 {growthIndicator}{growth + "%"}
                             </div>
                         }
                     />
-                    <BasicChart data={accountData} graph={"followers_count"} color={theme.colorPrimary}/>
+                    <BasicChart data={accountData} graph={"like_count"} color={theme.colorPrimary}/>
                 </Card>
             </div>
         );

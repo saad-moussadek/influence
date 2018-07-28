@@ -17,13 +17,11 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AssistantIcon from '@material-ui/icons/Assistant'
-import CommentIcon from '@material-ui/icons/Comment'
 import IncreaseIcon from '@material-ui/icons/ArrowDropUp'
 import DecreaseIcon from '@material-ui/icons/ArrowDropDown'
-import config from '../../config/config'
-import BasicChart from '../diagrams/chartTest'
+import FollowersIcon from '@material-ui/icons/Contacts'
+import BasicChart from '../../diagrams/chartTest'
 import green from "@material-ui/core/es/colors/green";
-import Chip from "@material-ui/core/es/Chip/Chip";
 
 const styles = theme => ({
     card: {
@@ -60,16 +58,16 @@ const styles = theme => ({
     },
 });
 
-class AccountCommentsCard extends React.Component {
+class AccountFollowersCard extends React.Component {
     render() {
         const {classes, theme, accountData} = this.props;
-        let growth = 0.1 * (-1000 + Math.round(1000 * (accountData[accountData.length - 1].comments_count / accountData[accountData.length - 2].comments_count)));
+        let growth = 0.1 * (-1000 + Math.round(1000 * (accountData[accountData.length - 1].followers_count / accountData[accountData.length - 2].followers_count)));
         let avatar;
         let growthIndicator;
         if (growth > 0) {
             avatar = (
                 <Avatar className={classes.avatarGreen}>
-                    <CommentIcon/>
+                    <FollowersIcon/>
                 </Avatar>
             );
             growthIndicator = (
@@ -79,7 +77,7 @@ class AccountCommentsCard extends React.Component {
         else {
             avatar = (
                 <Avatar className={classes.avatarRed}>
-                    <CommentIcon/>
+                    <FollowersIcon/>
                 </Avatar>
             );
             growthIndicator = (
@@ -97,24 +95,24 @@ class AccountCommentsCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={accountData[accountData.length - 1].comments_count + " comments"}
+                        title={accountData[accountData.length - 1].followers_count + " followers"}
                         subheader={
                             <div>
                                 {growthIndicator}{growth + "%"}
                             </div>
                         }
                     />
-                    <BasicChart data={accountData} graph={"comments_count"} color={theme.colorPrimary}/>
+                    <BasicChart data={accountData} graph={"followers_count"} color={theme.colorPrimary}/>
                 </Card>
             </div>
         );
     }
 }
 
-AccountCommentsCard.propTypes = {
+AccountFollowersCard.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
     accountData: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, {withTheme: true})(AccountCommentsCard);
+export default withStyles(styles, {withTheme: true})(AccountFollowersCard);

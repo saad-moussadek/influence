@@ -16,12 +16,14 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import AssistantIcon from '@material-ui/icons/Assistant'
+import ImpressionIcon from '@material-ui/icons/RemoveRedEye'
 import IncreaseIcon from '@material-ui/icons/ArrowDropUp'
 import DecreaseIcon from '@material-ui/icons/ArrowDropDown'
-import AssistantIcon from '@material-ui/icons/Assistant'
-import ThumbsUpIcon from '@material-ui/icons/ThumbUp'
-import BasicChart from '../diagrams/chartTest'
+import config from '../../../config/config'
+import BasicChart from '../../diagrams/chartTest'
 import green from "@material-ui/core/es/colors/green";
+import Chip from "@material-ui/core/es/Chip/Chip";
 
 const styles = theme => ({
     card: {
@@ -58,16 +60,16 @@ const styles = theme => ({
     },
 });
 
-class AccountFollowersCard extends React.Component {
+class MediaImpressionsCard extends React.Component {
     render() {
-        const {classes, theme, accountData} = this.props;
-        let growth = 0.1 * (-1000 + Math.round(1000 * (accountData[accountData.length - 1].like_count / accountData[accountData.length - 2].like_count)));
+        const {classes, theme, media} = this.props;
+        let growth = 0.1 * (-1000 + Math.round(1000 * (media.data[media.data.length - 1].impressions_count / media.data[media.data.length - 2].impressions_count)));
         let avatar;
         let growthIndicator;
         if (growth > 0) {
             avatar = (
                 <Avatar className={classes.avatarGreen}>
-                    <ThumbsUpIcon/>
+                    <ImpressionIcon/>
                 </Avatar>
             );
             growthIndicator = (
@@ -77,7 +79,7 @@ class AccountFollowersCard extends React.Component {
         else {
             avatar = (
                 <Avatar className={classes.avatarRed}>
-                    <ThumbsUpIcon/>
+                    <ImpressionIcon/>
                 </Avatar>
             );
             growthIndicator = (
@@ -95,24 +97,24 @@ class AccountFollowersCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={accountData[accountData.length - 1].followers_count + " likes"}
+                        title={media.data[media.data.length - 1].impressions_count + " impressions"}
                         subheader={
                             <div>
                                 {growthIndicator}{growth + "%"}
                             </div>
                         }
                     />
-                    <BasicChart data={accountData} graph={"like_count"} color={theme.colorPrimary}/>
+                    <BasicChart data={media.data} graph={"impressions_count"} graph2={"reach_count"} color={theme.colorPrimary} color2={theme.colorSecondary}/>
                 </Card>
             </div>
         );
     }
 }
 
-AccountFollowersCard.propTypes = {
+MediaImpressionsCard.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
-    accountData: PropTypes.object.isRequired,
+    media: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, {withTheme: true})(AccountFollowersCard);
+export default withStyles(styles, {withTheme: true})(MediaImpressionsCard);

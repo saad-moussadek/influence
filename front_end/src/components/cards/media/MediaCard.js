@@ -9,12 +9,16 @@ import Typography from '@material-ui/core/Typography';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
-import TinyLineChart from "../diagrams/chartTest";
+import TinyLineChart from "../../diagrams/chartTest";
 import Grid from "@material-ui/core/es/Grid/Grid";
 import Paper from "@material-ui/core/es/Paper/Paper";
 import CardActions from "@material-ui/core/es/CardActions/CardActions";
 import Button from "@material-ui/core/es/Button/Button";
 import ThumbsUpIcon from "@material-ui/icons/ThumbUp"
+import MediaLikesCard from './MediaLikesCard'
+import MediaImpressionsCard from "./MediaImpressionsCard";
+import MediaCommentsCard from "./MediaCommentsCard";
+import MediaExpansionPanel from "./MediaExpansionPanel";
 
 const styles = {
     card: {
@@ -41,7 +45,7 @@ const styles = {
         marginBottom: 12,
     },
     grid: {
-        paddingTop: 20,
+        // paddingTop: 20,
     }
 };
 
@@ -59,15 +63,18 @@ function MediaControlCard(props) {
                     image={media.imageURL}
                     title="Live from space album cover"
                 />
-                <Grid container spacing={24} className={classes.grid}>
+                <Grid container spacing={1} className={classes.grid}>
                     <Grid item md={4} xs={12}>
-                        <TinyLineChart data={media.data} graph={"like_count"} color={theme.colorPrimary}/>
+                        <MediaImpressionsCard media={media}/>
                     </Grid>
                     <Grid item md={4} xs={12}>
-                        <TinyLineChart data={media.data} graph={"comments_count"} color={theme.colorSecondary}/>
+                        <MediaLikesCard media={media}/>
                     </Grid>
                     <Grid item md={4} xs={12}>
-                        <TinyLineChart data={media.data} graph={"comments_count"} color={theme.colorPrimary}/>
+                        <MediaCommentsCard media={media}/>
+                    </Grid>
+                    <Grid item md={12}>
+                        <MediaExpansionPanel media={media}/>
                     </Grid>
                 </Grid>
             </Card>
