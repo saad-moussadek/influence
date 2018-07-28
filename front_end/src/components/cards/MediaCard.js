@@ -14,6 +14,7 @@ import Grid from "@material-ui/core/es/Grid/Grid";
 import Paper from "@material-ui/core/es/Paper/Paper";
 import CardActions from "@material-ui/core/es/CardActions/CardActions";
 import Button from "@material-ui/core/es/Button/Button";
+import ThumbsUpIcon from "@material-ui/icons/ThumbUp"
 
 const styles = {
     card: {
@@ -45,7 +46,7 @@ const styles = {
 };
 
 function MediaControlCard(props) {
-    const {classes, media} = props;
+    const {classes, theme, media} = props;
 
     return (
         <div>
@@ -60,13 +61,13 @@ function MediaControlCard(props) {
                 />
                 <Grid container spacing={24} className={classes.grid}>
                     <Grid item md={4} xs={12}>
-                        <TinyLineChart data={media.data} graph={"like_count"} color={"blue"}/>
+                        <TinyLineChart data={media.data} graph={"like_count"} color={theme.colorPrimary}/>
                     </Grid>
                     <Grid item md={4} xs={12}>
-                        <TinyLineChart data={media.data} graph={"comments_count"} color={"green"}/>
+                        <TinyLineChart data={media.data} graph={"comments_count"} color={theme.colorSecondary}/>
                     </Grid>
                     <Grid item md={4} xs={12}>
-                        <TinyLineChart data={media.data} graph={"comments_count"} color={"red"}/>
+                        <TinyLineChart data={media.data} graph={"comments_count"} color={theme.colorPrimary}/>
                     </Grid>
                 </Grid>
             </Card>

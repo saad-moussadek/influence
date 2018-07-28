@@ -15,7 +15,7 @@ import {withStyles} from "@material-ui/core/styles/index";
 import withTheme from "@material-ui/core/es/styles/withTheme";
 
 
-class TinyLineChart extends React.Component {
+class BasicChart extends React.Component {
     render () {
         let {data, graph, color} = this.props;
         return (
@@ -23,20 +23,20 @@ class TinyLineChart extends React.Component {
                 <LineChart width={600} height={300} data={data}
                            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                     <XAxis dataKey="date"/>
-                    {/*<CartesianGrid strokeDasharray="3 3"/>*/}
+                    <CartesianGrid strokeDasharray="3 3"/>
                     <Tooltip/>
-                    <Line type="monotone" dataKey={graph} stroke={color} />
+                    <Line type="monotone" dataKey={graph} stroke={color} strokeWidth={2.5} />
                 </LineChart>
             </ResponsiveContainer>
         );
     }
 }
 
-TinyLineChart.propTypes = {
+BasicChart.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
 };
 
-export default withTheme()(TinyLineChart);
+export default withTheme()(BasicChart);
 
