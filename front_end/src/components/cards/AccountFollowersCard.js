@@ -17,6 +17,8 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AssistantIcon from '@material-ui/icons/Assistant'
+import IncreaseIcon from '@material-ui/icons/ArrowDropUp'
+import DecreaseIcon from '@material-ui/icons/ArrowDropDown'
 import FollowersIcon from '@material-ui/icons/Contacts'
 import BasicChart from '../diagrams/chartTest'
 import green from "@material-ui/core/es/colors/green";
@@ -48,23 +50,40 @@ const styles = theme => ({
     avatarGreen: {
         backgroundColor: green[500],
     },
+    increaseGreen: {
+        color: "green",
+    },
+    decreaseRed: {
+        color: "red",
+    },
 });
 
 class AccountFollowersCard extends React.Component {
     render() {
         const {classes, theme, accountData} = this.props;
-        const growing = accountData[accountData.length - 1].followers_count > accountData[accountData.length - 2].followers_count;
+        let growth = 0.1 * (-1000 + Math.round(1000 * (accountData[accountData.length - 1].followers_count / accountData[accountData.length - 2].followers_count)));
         let avatar;
-        if (growing) avatar = (
-            <Avatar className={classes.avatarGreen}>
-                <FollowersIcon/>
-            </Avatar>
-        );
-        else avatar = (
-            <Avatar className={classes.avatarRed}>
-                <FollowersIcon/>
-            </Avatar>
-        );
+        let growthIndicator;
+        if (growth > 0) {
+            avatar = (
+                <Avatar className={classes.avatarGreen}>
+                    <FollowersIcon/>
+                </Avatar>
+            );
+            growthIndicator = (
+                <IncreaseIcon className={classes.increaseGreen}/>
+            );
+        }
+        else {
+            avatar = (
+                <Avatar className={classes.avatarRed}>
+                    <FollowersIcon/>
+                </Avatar>
+            );
+            growthIndicator = (
+                <DecreaseIcon className={classes.decreaseRed}/>
+            );
+        }
 
         return (
             <div>
@@ -76,8 +95,12 @@ class AccountFollowersCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title="Followers"
-                        subheader={accountData[accountData.length - 1].followers_count}
+                        title={accountData[accountData.length - 1].followers_count + " followers"}
+                        subheader={
+                            <div>
+                                {growthIndicator}{growth + "%"}
+                            </div>
+                        }
                     />
                     <BasicChart data={accountData} graph={"followers_count"} color={theme.colorPrimary}/>
                 </Card>

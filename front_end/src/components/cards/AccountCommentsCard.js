@@ -18,8 +18,12 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AssistantIcon from '@material-ui/icons/Assistant'
 import CommentIcon from '@material-ui/icons/Comment'
+import IncreaseIcon from '@material-ui/icons/ArrowDropUp'
+import DecreaseIcon from '@material-ui/icons/ArrowDropDown'
+import config from '../../config/config'
 import BasicChart from '../diagrams/chartTest'
 import green from "@material-ui/core/es/colors/green";
+import Chip from "@material-ui/core/es/Chip/Chip";
 
 const styles = theme => ({
     card: {
@@ -48,23 +52,40 @@ const styles = theme => ({
     avatarGreen: {
         backgroundColor: green[500],
     },
+    increaseGreen: {
+        color: "green",
+    },
+    decreaseRed: {
+        color: "red",
+    },
 });
 
 class AccountCommentsCard extends React.Component {
     render() {
         const {classes, theme, accountData} = this.props;
-        const growing = accountData[accountData.length - 1].comments_count > accountData[accountData.length - 2].comments_count;
+        let growth = 0.1 * (-1000 + Math.round(1000 * (accountData[accountData.length - 1].comments_count / accountData[accountData.length - 2].comments_count)));
         let avatar;
-        if (growing) avatar = (
-            <Avatar className={classes.avatarGreen}>
-                <CommentIcon/>
-            </Avatar>
-        );
-        else avatar = (
-            <Avatar className={classes.avatarRed}>
-                <CommentIcon/>
-            </Avatar>
-        );
+        let growthIndicator;
+        if (growth > 0) {
+            avatar = (
+                <Avatar className={classes.avatarGreen}>
+                    <CommentIcon/>
+                </Avatar>
+            );
+            growthIndicator = (
+                <IncreaseIcon className={classes.increaseGreen}/>
+            );
+        }
+        else {
+            avatar = (
+                <Avatar className={classes.avatarRed}>
+                    <CommentIcon/>
+                </Avatar>
+            );
+            growthIndicator = (
+                <DecreaseIcon className={classes.decreaseRed}/>
+            );
+        }
 
         return (
             <div>
@@ -76,8 +97,12 @@ class AccountCommentsCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title="Total Comments"
-                        subheader={accountData[accountData.length - 1].comments_count}
+                        title={accountData[accountData.length - 1].comments_count + " comments"}
+                        subheader={
+                            <div>
+                                {growthIndicator}{growth + "%"}
+                            </div>
+                        }
                     />
                     <BasicChart data={accountData} graph={"comments_count"} color={theme.colorPrimary}/>
                 </Card>

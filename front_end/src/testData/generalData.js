@@ -25,7 +25,7 @@ const accountData = [
     {
         followers_count: 25,
         comments_count: 35,
-        like_count: 1750,
+        like_count: 1200,
         date: new Date(),
         day: new Date().getDay(),
     },
