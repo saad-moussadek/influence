@@ -14,73 +14,44 @@ import routes from "../config/routes";
 import {NavLink} from "react-router-dom";
 import Divider from "@material-ui/core/es/Divider/Divider";
 import {withStyles} from "@material-ui/core/styles/index";
-
-const drawerWidth = 300;
+import List from "@material-ui/core/es/List/List";
+import Link from "react-router-dom/es/Link";
+import MenuItem from "@material-ui/core/es/MenuItem/MenuItem";
 
 const styles = theme => ({
-    root: {
-        flexGrow: 1,
-        zIndex: 1,
-        overflow: 'hidden',
-        position: 'relative',
-        display: 'flex',
-        width: '100%',
+    inactive: {
+        opacity: "0.7"
     },
-    icon: {
-        margin: theme.spacing.unit,
-        fontSize: 32,
+    active: {
+        opacity: "1",
     },
-    appBar: {
-        position: 'absolute',
-        marginLeft: drawerWidth,
-        // [theme.breakpoints.up('md')]: {
-        //     width: `calc(100% - ${drawerWidth}px)`,
-        // },
-        zIndex: theme.zIndex.drawer + 1,
-    },
-    navIconHide: {
-        [theme.breakpoints.up('md')]: {
-            display: 'none',
-        },
-    },
-    toolbar: theme.mixins.toolbar,
-    drawerPaper: {
-        width: drawerWidth,
-        [theme.breakpoints.up('md')]: {
-            position: 'relative',
-        },
-    },
-    content: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.background.default,
-        padding: theme.spacing.unit * 3,
-    },
+    typography: {
+        fontFamily: "Roboto"
+    }
 });
 
 class DrawerTabs extends React.Component {
     render() {
         const {classes, theme} = this.props;
         return (
-            <div>
+            <List>
                 {routes.map((prop, key) => {
-                    let fontSize = 10;
                     if (!prop.redirect && !prop.separator) {
                         return (
-                            <NavLink to={prop.path} className={'nav-link'}>
 
-                                <ListItem button>
-                                    <ListItemIcon>
-                                        {prop.icon()}
-                                    </ListItemIcon>
-                                    <ListItemText primaryTypographyProps={fontSize} primary={prop.name}/>
-                                </ListItem>
+                            <ListItem button component={NavLink} to={prop.path} className={classes.inactive} activeClassName={classes.active}>
+                                <ListItemIcon className={"inherit"}>
+                                    {prop.icon()}
+                                </ListItemIcon>
+                                <ListItemText primary={prop.name}/>
+                            </ListItem>
 
-                            </NavLink>
+
                         );
                     }
                     else return null;
                 })}
-            </div>
+            </List>
         )
     }
 }
@@ -90,4 +61,4 @@ DrawerTabs.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(DrawerTabs);
+export default withStyles(styles, {withTheme: true})(DrawerTabs);
