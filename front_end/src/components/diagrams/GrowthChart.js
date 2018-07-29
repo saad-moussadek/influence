@@ -34,11 +34,12 @@ const getMinData = function(data, graph) {
 };
 
 const gradientOffset = function(data, graph) {
-    console.log(graph);
-    console.log(data);
-
     const dataMax = getMaxData(data, graph);
     const dataMin = getMinData(data, graph);
+    console.log(graph);
+    console.log(data);
+    console.log(dataMin);
+    console.log(dataMax);
 
     if (dataMax <= 0) {
         return 0
@@ -54,7 +55,8 @@ const gradientOffset = function(data, graph) {
 class GrowthChart extends React.Component {
     render() {
         let {data, graph, graph2, color, color2} = this.props;
-        const off = gradientOffset(data, graph + "_growthDerivative");
+        let off = gradientOffset(data, graph + "_growthDerivative");
+        console.log(off)
         return (
             <ResponsiveContainer width={"100%"} height={200}>
                 <AreaChart
@@ -66,13 +68,14 @@ class GrowthChart extends React.Component {
                     <CartesianGrid strokeDasharray="3 3"/>
                     <XAxis dataKey="date"/>
                     <Tooltip/>
+                    <ReferenceLine y={0} label="" stroke="red"/>
                     <defs>
                         <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
                             <stop offset={off} stopColor={color} stopOpacity={1}/>
                             <stop offset={off} stopColor={color2} stopOpacity={1}/>
                         </linearGradient>
                     </defs>
-                    <Area type="monotone" dataKey={graph + "_growthDerivative"} stroke="#000" fill="url(#splitColor)"/>
+                    <Area type="monotone" dataKey={graph + "_growthDerivative"} stroke={color} fill="url(#splitColor)"/>
                 </AreaChart>
             </ResponsiveContainer>
         );

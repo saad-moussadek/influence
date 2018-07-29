@@ -16,8 +16,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import IncreaseIcon from '@material-ui/icons/ArrowDropUp'
-import DecreaseIcon from '@material-ui/icons/ArrowDropDown'
+import IncreaseIcon from '@material-ui/icons/TrendingUp'
+import DecreaseIcon from '@material-ui/icons/TrendingDown'
 import AssistantIcon from '@material-ui/icons/Assistant'
 import ThumbsUpIcon from '@material-ui/icons/ThumbUp'
 import BasicChart from '../../diagrams/BasicChart'
@@ -61,7 +61,7 @@ const styles = theme => ({
 class AccountFollowersCard extends React.Component {
     render() {
         const {classes, theme, generalData} = this.props;
-        let growth = 0.1 * (-1000 + Math.round(1000 * (generalData[generalData.length - 1].like_count / generalData[generalData.length - 2].like_count)));
+        let growth = generalData[generalData.length - 1].like_count - generalData[generalData.length - 2].like_count;
         let avatar;
         let growthIndicator;
         if (growth > 0) {
@@ -98,7 +98,7 @@ class AccountFollowersCard extends React.Component {
                         title={generalData[generalData.length - 1].followers_count + " likes"}
                         subheader={
                             <div>
-                                {growthIndicator}{growth + "%"}
+                                {growthIndicator}{growth}
                             </div>
                         }
                     />

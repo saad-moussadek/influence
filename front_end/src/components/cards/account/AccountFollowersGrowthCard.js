@@ -103,7 +103,7 @@ class AccountFollowersGrowthCard extends React.Component {
                             </div>
                         }
                     />
-                    <GrowthChart data={generalData} graph={"followers_count"} color={green[500]} color2={red[500]}/>
+                    <GrowthChart data={generalData} graph={"followers_count"} color={"lightblue"} color2={"lightblue"}/>
                 </Card>
             </div>
         );

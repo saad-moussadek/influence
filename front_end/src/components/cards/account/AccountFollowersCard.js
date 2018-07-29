@@ -17,8 +17,8 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AssistantIcon from '@material-ui/icons/Assistant'
-import IncreaseIcon from '@material-ui/icons/ArrowDropUp'
-import DecreaseIcon from '@material-ui/icons/ArrowDropDown'
+import IncreaseIcon from '@material-ui/icons/TrendingUp'
+import DecreaseIcon from '@material-ui/icons/TrendingDown'
 import FollowersIcon from '@material-ui/icons/Contacts'
 import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
@@ -61,7 +61,7 @@ const styles = theme => ({
 class AccountFollowersCard extends React.Component {
     render() {
         const {classes, theme, generalData} = this.props;
-        let growth = 0.1 * (-1000 + Math.round(1000 * (generalData[generalData.length - 1].followers_count / generalData[generalData.length - 2].followers_count)));
+        let growth = generalData[generalData.length - 1].followers_count - generalData[generalData.length - 2].followers_count;
         let avatar;
         let growthIndicator;
         if (growth > 0) {
@@ -98,7 +98,7 @@ class AccountFollowersCard extends React.Component {
                         title={generalData[generalData.length - 1].followers_count + " followers"}
                         subheader={
                             <div>
-                                {growthIndicator}{growth + "%"}
+                                {growthIndicator}{growth}
                             </div>
                         }
                     />
