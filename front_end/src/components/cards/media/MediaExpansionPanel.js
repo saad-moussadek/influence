@@ -22,7 +22,7 @@ const styles = theme => ({
 });
 
 function MediaExpansionPanel(props) {
-    const { classes, media } = props;
+    const { classes, mediaData } = props;
     return (
         <div className={classes.root}>
             <ExpansionPanel>
@@ -32,13 +32,13 @@ function MediaExpansionPanel(props) {
                 <ExpansionPanelDetails>
                     <Grid container spacing={1} className={classes.grid}>
                         <Grid item md={4} xs={12}>
-                            <MediaImpressionsCard media={media}/>
+                            <MediaImpressionsCard mediaData={mediaData}/>
                         </Grid>
                         <Grid item md={4} xs={12}>
-                            <MediaLikesCard media={media}/>
+                            <MediaLikesCard mediaData={mediaData}/>
                         </Grid>
                         <Grid item md={4} xs={12}>
-                            <MediaCommentsCard media={media}/>
+                            <MediaCommentsCard mediaData={mediaData}/>
                         </Grid>
                     </Grid>
                 </ExpansionPanelDetails>
@@ -49,6 +49,7 @@ function MediaExpansionPanel(props) {
 
 MediaExpansionPanel.propTypes = {
     classes: PropTypes.object.isRequired,
+    mediaData: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(MediaExpansionPanel);

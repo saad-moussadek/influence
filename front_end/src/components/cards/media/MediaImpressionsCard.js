@@ -62,8 +62,8 @@ const styles = theme => ({
 
 class MediaImpressionsCard extends React.Component {
     render() {
-        const {classes, theme, media} = this.props;
-        let growth = 0.1 * (-1000 + Math.round(1000 * (media.data[media.data.length - 1].impressions_count / media.data[media.data.length - 2].impressions_count)));
+        const {classes, theme, mediaData} = this.props;
+        let growth = 0.1 * (-1000 + Math.round(1000 * (mediaData.data[mediaData.data.length - 1].impressions_count / mediaData.data[mediaData.data.length - 2].impressions_count)));
         let avatar;
         let growthIndicator;
         if (growth > 0) {
@@ -97,14 +97,14 @@ class MediaImpressionsCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={media.data[media.data.length - 1].impressions_count + " impressions"}
+                        title={mediaData.data[mediaData.data.length - 1].impressions_count + " impressions"}
                         subheader={
                             <div>
                                 {growthIndicator}{growth + "%"}
                             </div>
                         }
                     />
-                    <BasicChart data={media.data} graph={"impressions_count"} graph2={"reach_count"} color={theme.colorPrimary} color2={theme.colorSecondary}/>
+                    <BasicChart data={mediaData.data} graph={"impressions_count"} graph2={"reach_count"} color={theme.colorPrimary} color2={theme.colorSecondary}/>
                 </Card>
             </div>
         );
@@ -114,7 +114,7 @@ class MediaImpressionsCard extends React.Component {
 MediaImpressionsCard.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
-    media: PropTypes.object.isRequired,
+    mediaData: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles, {withTheme: true})(MediaImpressionsCard);

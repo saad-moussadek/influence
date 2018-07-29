@@ -22,6 +22,7 @@ import AssistantIcon from '@material-ui/icons/Assistant'
 import ThumbsUpIcon from '@material-ui/icons/ThumbUp'
 import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
+import GrowthChart from "../../diagrams/GrowthChart";
 
 const styles = theme => ({
     card: {
@@ -58,13 +59,13 @@ const styles = theme => ({
     },
 });
 
-class AccountFollowersCard extends React.Component {
+class AccountLikesGrowthCard extends React.Component {
     render() {
         const {classes, theme, generalData} = this.props;
-        let growth = 0.1 * (-1000 + Math.round(1000 * (generalData[generalData.length - 1].like_count / generalData[generalData.length - 2].like_count)));
+        let growthGrowth = Math.round(0.1 * (-1000 + (1000 * (generalData[generalData.length - 1].like_count_growthDerivative / generalData[generalData.length - 2].like_count_growthDerivative))));
         let avatar;
         let growthIndicator;
-        if (growth > 0) {
+        if (growthGrowth > 0) {
             avatar = (
                 <Avatar className={classes.avatarGreen}>
                     <ThumbsUpIcon/>
@@ -95,24 +96,24 @@ class AccountFollowersCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={generalData[generalData.length - 1].followers_count + " likes"}
+                        title={"Likes growth"}
                         subheader={
                             <div>
-                                {growthIndicator}{growth + "%"}
+                                {growthIndicator}{growthGrowth + "%"}
                             </div>
                         }
                     />
-                    <BasicChart data={generalData} graph={"like_count"} color={theme.colorPrimary}/>
+                    <GrowthChart data={generalData} graph={"like_count"} color={green[500]} color2={red[500]}/>
                 </Card>
             </div>
         );
     }
 }
 
-AccountFollowersCard.propTypes = {
+AccountLikesGrowthCard.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
     generalData: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, {withTheme: true})(AccountFollowersCard);
+export default withStyles(styles, {withTheme: true})(AccountLikesGrowthCard);

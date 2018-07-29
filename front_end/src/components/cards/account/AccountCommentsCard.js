@@ -62,8 +62,8 @@ const styles = theme => ({
 
 class AccountCommentsCard extends React.Component {
     render() {
-        const {classes, theme, accountData} = this.props;
-        let growth = 0.1 * (-1000 + Math.round(1000 * (accountData[accountData.length - 1].comments_count / accountData[accountData.length - 2].comments_count)));
+        const {classes, theme, generalData} = this.props;
+        let growth = 0.1 * (-1000 + Math.round(1000 * (generalData[generalData.length - 1].comments_count / generalData[generalData.length - 2].comments_count)));
         let avatar;
         let growthIndicator;
         if (growth > 0) {
@@ -97,14 +97,14 @@ class AccountCommentsCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={accountData[accountData.length - 1].comments_count + " comments"}
+                        title={generalData[generalData.length - 1].comments_count + " comments"}
                         subheader={
                             <div>
                                 {growthIndicator}{growth + "%"}
                             </div>
                         }
                     />
-                    <BasicChart data={accountData} graph={"comments_count"} color={theme.colorPrimary}/>
+                    <BasicChart data={generalData} graph={"comments_count"} color={theme.colorPrimary}/>
                 </Card>
             </div>
         );
@@ -114,7 +114,7 @@ class AccountCommentsCard extends React.Component {
 AccountCommentsCard.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
-    accountData: PropTypes.object.isRequired,
+    generalData: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles, {withTheme: true})(AccountCommentsCard);

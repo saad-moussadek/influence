@@ -30,7 +30,7 @@ class Media extends Component {
                     {testData.map((prop, key) => {
                         return (
                             <Grid item xs={12}>
-                                <MediaControlCard media={prop}/>
+                                <MediaControlCard mediaData={prop}/>
                             </Grid>
                         )
                     })}

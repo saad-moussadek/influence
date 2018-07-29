@@ -50,31 +50,31 @@ const styles = {
 };
 
 function MediaControlCard(props) {
-    const {classes, theme, media} = props;
+    const {classes, theme, mediaData} = props;
 
     return (
         <div>
             <Typography className={classes.title} color="textSecondary">
-                {"Uploaded on " + media.data[media.data.length - 1].date.toDateString()}
+                {"Uploaded on " + mediaData.data[mediaData.data.length - 1].date.toDateString()}
             </Typography>
             <Card className={classes.card}>
                 <CardMedia
                     className={classes.cover}
-                    image={media.imageURL}
+                    image={mediaData.imageURL}
                     title="Live from space album cover"
                 />
                 <Grid container spacing={1} className={classes.grid}>
                     <Grid item md={4} xs={12}>
-                        <MediaImpressionsCard media={media}/>
+                        <MediaImpressionsCard mediaData={mediaData}/>
                     </Grid>
                     <Grid item md={4} xs={12}>
-                        <MediaLikesCard media={media}/>
+                        <MediaLikesCard mediaData={mediaData}/>
                     </Grid>
                     <Grid item md={4} xs={12}>
-                        <MediaCommentsCard media={media}/>
+                        <MediaCommentsCard mediaData={mediaData}/>
                     </Grid>
                     <Grid item md={12}>
-                        <MediaExpansionPanel media={media}/>
+                        <MediaExpansionPanel mediaData={mediaData}/>
                     </Grid>
                 </Grid>
             </Card>
@@ -86,7 +86,7 @@ function MediaControlCard(props) {
 MediaControlCard.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
-    media: PropTypes.object.isRequired,
+    mediaData: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles, {withTheme: true})(MediaControlCard);

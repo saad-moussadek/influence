@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -69,17 +69,19 @@ class Root extends React.Component {
     };
 
     handleDrawerToggle = () => {
-        this.setState(state => ({mobileOpen: !state.mobileOpen}));
+        this.setState(state => ({ mobileOpen: !state.mobileOpen }));
     };
 
     render() {
-        const {classes, theme} = this.props;
+        const { classes, theme } = this.props;
 
         const drawer = (
             <div>
-                <div className={classes.toolbar}/>
-                <Divider/>
-                <DrawerTabs/>
+                <div className={classes.toolbar} />
+                <Divider />
+                <List>
+                    <DrawerTabs />
+                </List>
             </div>
         );
 
@@ -93,11 +95,11 @@ class Root extends React.Component {
                             onClick={this.handleDrawerToggle}
                             className={classes.navIconHide}
                         >
-                            <MenuIcon/>
+                            <MenuIcon />
                         </IconButton>
 
                         <Hidden smDown>
-                            <AppIcon className={classes.icon}/>
+                            <AppIcon className={classes.icon} />
                         </Hidden>
 
                         <Typography variant="title" color="inherit" noWrap>
@@ -133,15 +135,15 @@ class Root extends React.Component {
                     </Drawer>
                 </Hidden>
                 <main className={classes.content}>
-                    <div className={classes.toolbar}/>
+                    <div className={classes.toolbar} />
 
                     <HashRouter>
                         <Switch>
                             {routes.map((prop, key) => {
                                 if (prop.redirect)
-                                    return <Redirect from={prop.path} to={prop.to}/>
+                                    return <Redirect from={prop.path} to={prop.to} />
                                 else
-                                    return <Route from={prop.path} component={prop.component}/>
+                                    return <Route from={prop.path} component={prop.component} />
                             })}
                         </Switch>
                     </HashRouter>
@@ -157,4 +159,4 @@ Root.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, {withTheme: true})(Root);
+export default withStyles(styles, { withTheme: true })(Root);

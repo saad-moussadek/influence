@@ -60,8 +60,8 @@ const styles = theme => ({
 
 class AccountFollowersCard extends React.Component {
     render() {
-        const {classes, theme, accountData} = this.props;
-        let growth = 0.1 * (-1000 + Math.round(1000 * (accountData[accountData.length - 1].followers_count / accountData[accountData.length - 2].followers_count)));
+        const {classes, theme, generalData} = this.props;
+        let growth = 0.1 * (-1000 + Math.round(1000 * (generalData[generalData.length - 1].followers_count / generalData[generalData.length - 2].followers_count)));
         let avatar;
         let growthIndicator;
         if (growth > 0) {
@@ -95,14 +95,14 @@ class AccountFollowersCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={accountData[accountData.length - 1].followers_count + " followers"}
+                        title={generalData[generalData.length - 1].followers_count + " followers"}
                         subheader={
                             <div>
                                 {growthIndicator}{growth + "%"}
                             </div>
                         }
                     />
-                    <BasicChart data={accountData} graph={"followers_count"} color={theme.colorPrimary}/>
+                    <BasicChart data={generalData} graph={"followers_count"} color={theme.colorPrimary}/>
                 </Card>
             </div>
         );
@@ -112,7 +112,7 @@ class AccountFollowersCard extends React.Component {
 AccountFollowersCard.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
-    accountData: PropTypes.object.isRequired,
+    generalData: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles, {withTheme: true})(AccountFollowersCard);

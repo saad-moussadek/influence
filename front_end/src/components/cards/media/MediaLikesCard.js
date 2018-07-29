@@ -62,8 +62,8 @@ const styles = theme => ({
 
 class MediaLikesCard extends React.Component {
     render() {
-        const {classes, theme, media} = this.props;
-        let growth = 0.1 * (-1000 + Math.round(1000 * (media.data[media.data.length - 1].like_count / media.data[media.data.length - 2].like_count)));
+        const {classes, theme, mediaData} = this.props;
+        let growth = 0.1 * (-1000 + Math.round(1000 * (mediaData.data[mediaData.data.length - 1].like_count / mediaData.data[mediaData.data.length - 2].like_count)));
         let avatar;
         let growthIndicator;
         if (growth > 0) {
@@ -97,14 +97,14 @@ class MediaLikesCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={media.data[media.data.length - 1].like_count + " likes"}
+                        title={mediaData.data[mediaData.data.length - 1].like_count + " likes"}
                         subheader={
                             <div>
                                 {growthIndicator}{growth + "%"}
                             </div>
                         }
                     />
-                    <BasicChart data={media.data} graph={"like_count"} color={theme.colorPrimary}/>
+                    <BasicChart data={mediaData.data} graph={"like_count"} color={theme.colorPrimary}/>
                 </Card>
             </div>
         );
@@ -114,7 +114,7 @@ class MediaLikesCard extends React.Component {
 MediaLikesCard.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
-    media: PropTypes.object.isRequired,
+    mediaData: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles, {withTheme: true})(MediaLikesCard);

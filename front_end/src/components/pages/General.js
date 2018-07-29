@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MuiThemeProvider from "@material-ui/core/es/styles/MuiThemeProvider";
 import Typography from "@material-ui/core/es/Typography/Typography";
 import Router from "react-router";
-import accountData from "../../testData/generalData"
+import generalData from "../../testData/generalData"
 import {withStyles} from "@material-ui/core/styles/index";
 import Paper from "@material-ui/core/es/Paper/Paper";
 import Grid from "@material-ui/core/es/Grid/Grid";
@@ -11,6 +11,10 @@ import withTheme from "@material-ui/core/es/styles/withTheme";
 import AccountFollowersCard from "../cards/account/AccountFollowersCard";
 import AccountLikesCard from "../cards/account/AccountLikesCard";
 import AccountCommentsCard from "../cards/account/AccountCommentsCard";
+import AccountLikesGrowthCard from "../cards/account/AccountLikesGrowthCard";
+import AccountFollowersGrowthCard from "../cards/account/AccountFollowersGrowthCard";
+import AccountCommentsGrowthCard from "../cards/account/AccountCommentsGrowthCard";
+
 
 const styles = theme => ({
     root: {
@@ -30,13 +34,22 @@ class General extends Component {
             <div className={classes.root}>
                 <Grid container spacing={24}>
                     <Grid item md={4} xs={12}>
-                        <AccountFollowersCard accountData={accountData}/>
+                        <AccountFollowersCard generalData={generalData}/>
                     </Grid>
                     <Grid item md={4} xs={12}>
-                        <AccountLikesCard accountData={accountData}/>
+                        <AccountLikesCard generalData={generalData}/>
                     </Grid>
                     <Grid item md={4} xs={12}>
-                        <AccountCommentsCard accountData={accountData}/>
+                        <AccountCommentsCard generalData={generalData}/>
+                    </Grid>
+                    <Grid item md={4} xs={12}>
+                        <AccountFollowersGrowthCard generalData={generalData}/>
+                    </Grid>
+                    <Grid item md={4} xs={12}>
+                        <AccountLikesGrowthCard generalData={generalData}/>
+                    </Grid>
+                    <Grid item md={4} xs={12}>
+                        <AccountCommentsGrowthCard generalData={generalData}/>
                     </Grid>
                 </Grid>
             </div>
