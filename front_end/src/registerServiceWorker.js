@@ -71,7 +71,7 @@ function registerValidSW(swUrl) {
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
               console.log('Content is cached for offline use.');
-              console.log("Alex was here2");
+              console.log("Alex was here5");
             }
           }
         };
