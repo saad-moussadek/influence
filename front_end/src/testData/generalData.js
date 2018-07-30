@@ -1,6 +1,6 @@
 import React from "react";
 
-const accountData = [
+const generalData = [
     {
         followers_count: 0,
         comments_count: 0,
@@ -52,4 +52,4 @@ const accountData = [
     },
 ];
 
-export default accountData;
+export default generalData;
