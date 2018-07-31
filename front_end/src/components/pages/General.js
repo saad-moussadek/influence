@@ -14,6 +14,7 @@ import AccountCommentsCard from "../cards/account/AccountCommentsCard";
 import AccountLikesGrowthCard from "../cards/account/AccountLikesGrowthCard";
 import AccountFollowersGrowthCard from "../cards/account/AccountFollowersGrowthCard";
 import AccountCommentsGrowthCard from "../cards/account/AccountCommentsGrowthCard";
+import AccountPostsLikesBarCard from "../cards/account/AccountPostsLikesBarCard";
 
 
 const styles = theme => ({
@@ -50,6 +51,9 @@ class General extends Component {
                     </Grid>
                     <Grid item md={4} xs={12}>
                         <AccountCommentsGrowthCard generalData={generalData}/>
+                    </Grid>
+                    <Grid item md={4} xs={12}>
+                        <AccountPostsLikesBarCard generalData={generalData}/>
                     </Grid>
                 </Grid>
             </div>
