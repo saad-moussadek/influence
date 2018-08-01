@@ -6,11 +6,14 @@ import TimelineIcon from "@material-ui/icons/Timeline";
 import BackupIcon from "@material-ui/icons/Backup";
 import PeopleIcon from "@material-ui/icons/People";
 import GeneralIcon from "@material-ui/icons/DataUsage";
+import TestIcon from "@material-ui/icons/DirectionsRun";
 import Indices from "../components/pages/Indices";
 import General from "../components/pages/General";
 import Audience from "../components/pages/Audience";
 import Media from "../components/pages/Media";
 import Estimates from "../components/pages/Estimates";
+import SaadTest from "../components/pages/SaadTest";
+import AlexTest from "../components/pages/AlexTest";
 
 
 const routes = [
@@ -49,6 +52,18 @@ const routes = [
         name: "Estimates",
         icon: () => {return (<TimelineIcon/>)},
         component: Estimates,
+    },
+    {
+        path: "/saadtest",
+        name: "Saad Test",
+        icon: () => {return (<TestIcon/>)},
+        component: SaadTest,
+    },
+    {
+        path: "/alextest",
+        name: "Alex Test",
+        icon: () => {return (<TestIcon/>)},
+        component: AlexTest,
     },
     {
         redirect: true,
