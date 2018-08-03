@@ -71,10 +71,10 @@ class BasicChart extends React.Component {
         return (
             <div>
                 <IconButton className={classes.button} aria-label="Delete" onClick={this.onClickSwitch}>
-                    <ShowChart style={{visibility: this.state.lineChartVisibility}}/>
+                    <ShowChart style={{visibility: this.state.barChartVisibility}}/>
                 </IconButton>
                 <IconButton className={classes.button} aria-label="Delete" onClick={this.onClickSwitch}>
-                    <BarChartIcon style={{visibility: this.state.barChartVisibility}}/>
+                    <BarChartIcon style={{visibility: this.state.lineChartVisibility}}/>
                 </IconButton>
                 <ResponsiveContainer width={"100%"} height={this.state.lineChartShrink} style={{visibility: this.state.lineChartVisibility}}>
                     <LineChart width={600} height={300} data={data}
