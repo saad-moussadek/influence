@@ -23,7 +23,7 @@ import BarChartIcon from "@material-ui/icons/BarChart";
 const styles = theme => ({
     button: {
         marginTop: 0,
-        marginLeft: theme.spacing.unit,
+        marginLeft: 2 * theme.spacing.unit,
         display: "flex",
         position: "absolute",
         zIndex: 10,
