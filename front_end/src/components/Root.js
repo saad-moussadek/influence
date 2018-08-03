@@ -20,6 +20,7 @@ import Router from "react-router/es/Router";
 import MyDashboard from "./pages/MyDashboard";
 import {HashRouter, Redirect, Switch} from "react-router-dom";
 import routes from "../config/routes";
+import SwipeableDrawer from "@material-ui/core/es/SwipeableDrawer/SwipeableDrawer";
 
 const drawerWidth = 300;
 
@@ -53,13 +54,16 @@ const styles = theme => ({
     drawerPaper: {
         width: drawerWidth,
         [theme.breakpoints.up('md')]: {
-            position: 'relative',
+            position: 'fixed',
         },
     },
     content: {
         flexGrow: 1,
         backgroundColor: theme.palette.background.default,
         padding: theme.spacing.unit * 3,
+        [theme.breakpoints.up('md')]: {
+            marginLeft: drawerWidth
+        },
     },
 });
 
@@ -108,7 +112,7 @@ class Root extends React.Component {
                     </Toolbar>
                 </AppBar>
                 <Hidden mdUp>
-                    <Drawer
+                    <SwipeableDrawer
                         variant="temporary"
                         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
                         open={this.state.mobileOpen}
@@ -121,7 +125,7 @@ class Root extends React.Component {
                         }}
                     >
                         {drawer}
-                    </Drawer>
+                    </SwipeableDrawer>
                 </Hidden>
                 <Hidden smDown implementation="css">
                     <Drawer
