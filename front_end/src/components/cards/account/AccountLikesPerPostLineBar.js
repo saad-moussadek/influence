@@ -22,7 +22,7 @@ import AssistantIcon from '@material-ui/icons/Assistant'
 import ThumbsUpIcon from '@material-ui/icons/ThumbUp'
 import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
-import SimpleBarChart from "../../diagrams/SimpleBarChart";
+import SameDataComposedChart from "../../diagrams/GrowthChart";
 
 const styles = theme => ({
     card: {
@@ -103,7 +103,7 @@ class AccountFollowersCard extends React.Component {
                             </div>
                         }
                     />
-                    <SimpleBarChart data={generalData} graph={"like_count"} color={theme.colorPrimary}/>
+                    <SameDataComposedChart data={generalData} graph={"like_count"} color={theme.colorPrimary}/>
                 </Card>
             </div>
         );
