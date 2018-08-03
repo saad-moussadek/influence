@@ -117,6 +117,7 @@ class Root extends React.Component {
                         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
                         open={this.state.mobileOpen}
                         onClose={this.handleDrawerToggle}
+                        onClick={this.handleDrawerToggle}
                         classes={{
                             paper: classes.drawerPaper,
                         }}
