@@ -15,8 +15,9 @@ import AccountCommentsCard from "../cards/account/AccountCommentsCard";
 import AccountLikesGrowthCard from "../cards/account/AccountLikesGrowthCard";
 import AccountFollowersGrowthCard from "../cards/account/AccountFollowersGrowthCard";
 import AccountCommentsGrowthCard from "../cards/account/AccountCommentsGrowthCard";
-import AccountLikesPerPostLineBar from "../cards/account/AccountLikesPerPostLineBar";
+import AccountLikesPerPostLineBarCard from "../cards/account/AccountLikesPerPostLineBarCard";
 import AccountNoPostsCard from "../cards/account/AccountNoPostsCard";
+
 
 
 const styles = theme => ({
@@ -36,25 +37,26 @@ class AlexTest extends Component {
         return (
             <div className={classes.root}>
                 <Grid container spacing={24}>
-                    No. of published posts
+                    /// No. of published posts ///
                     <Grid item md={12} xs={12}>
                         Daily/Weekly/Monthly Trends - NOT DONE! HAVE TO TALK ABOUT BEST OPTIONS!
                         <AccountNoPostsCard generalData={generalData}/>
                         Currrent no. of published posts - NOT DONE
-                        {/*<Avatar src={10}></Avatar>*/}
                     </Grid>
-                    No. of Likes
+                    /// No. of Likes ///
                     <Grid item md={12} xs={12}>
                         Daily/Weekly/Monthly Trends - NOT DONE
                         Current total no. of likts - NOT DONE
-                        Per post trends/total
-                        <AccountLikesPerPostLineBar generalData={generalData}/>
+                        Per post trends/total - NOT DONE
+                        <AccountLikesPerPostLineBarCard generalData={generalData}/>
                         Currrent no. of published posts - NOT DONE
                         {/*<Avatar src={10}></Avatar>*/}
                     </Grid>
+                    /// Comments ///
                     <Grid item md={12} xs={12}>
                         <AccountLikesCard generalData={generalData}/>
                     </Grid>
+                    /// Total Followers ///
                     <Grid item md={12} xs={12}>
                         <AccountCommentsCard generalData={generalData}/>
                     </Grid>
