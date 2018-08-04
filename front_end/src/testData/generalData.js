@@ -2,10 +2,10 @@ import React from "react";
 
 const generalData = [
     {
-        followers_count: 0,
-        comments_count: 0,
+        followers_count: 1,
+        comments_count: 1,
         like_count: 2000,
-        post_count: 0,
+        post_count: 1,
         date: new Date(),
         day: new Date().getDay(),
     },

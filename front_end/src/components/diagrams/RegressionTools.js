@@ -32,15 +32,15 @@ let getBestRegression = function (data, graph) {
     const resultLinear = regression.linear(converted);
     resultLinear.type = "linear";
     const resultSquared = regression.polynomial(converted, {order: 2});
-    resultLinear.type = "square";
+    resultSquared.type = "square";
     const resultCubed = regression.polynomial(converted, {order: 3});
-    resultLinear.type = "cube";
+    resultCubed.type = "cube";
     const resultLogarithmic = regression.logarithmic(converted);
-    resultLinear.type = "logarithm";
+    resultLogarithmic.type = "logarithm";
     const resultExponential = regression.exponential(converted);
-    resultLinear.type = "exponential";
+    resultExponential.type = "exponential";
     const resultPower = regression.power(converted);
-    resultLinear.type = "power";
+    resultPower.type = "power";
 
     let result;
     let maximumR2 = 0;
@@ -50,6 +50,8 @@ let getBestRegression = function (data, graph) {
     if (resultLogarithmic.r2 > maximumR2) result = resultLogarithmic;
     if (resultExponential.r2 > maximumR2) result = resultExponential;
     if (resultPower.r2 > maximumR2) result = resultPower;
+
+    console.log(result)
 
     return result;
 };

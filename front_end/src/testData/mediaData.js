@@ -6,10 +6,10 @@ const media = [
         caption: "This is a caption #caption #photo",
         data: [
             {
-                reach_count: 0,
-                impressions_count: 0,
-                comments_count: 0,
-                like_count: 0,
+                reach_count: 1,
+                impressions_count: 1,
+                comments_count: 1,
+                like_count: 1,
                 date: new Date(),
                 day: new Date().getDay(),
             },
@@ -44,10 +44,10 @@ const media = [
         caption: "This is a caption #caption #photo",
         data: [
             {
-                reach_count: 0,
-                impressions_count: 0,
-                comments_count: 0,
-                like_count: 0,
+                reach_count: 1,
+                impressions_count: 1,
+                comments_count: 1,
+                like_count: 1,
                 date: new Date(),
                 day: new Date().getDay(),
             },
@@ -82,10 +82,10 @@ const media = [
         caption: "This is a caption #caption #photo",
         data: [
             {
-                reach_count: 0,
-                impressions_count: 0,
-                comments_count: 0,
-                like_count: 0,
+                reach_count: 1,
+                impressions_count: 1,
+                comments_count: 1,
+                like_count: 1,
                 date: new Date(),
                 day: new Date().getDay(),
             },
