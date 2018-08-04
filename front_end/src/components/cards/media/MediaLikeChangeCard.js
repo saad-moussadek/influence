@@ -29,6 +29,7 @@ import SimpleBarChart from "../../diagrams/SimpleBarChart";
 const styles = theme => ({
     card: {
         maxWidth: 400,
+        borderRadius: 0
     },
     media: {
         height: 0,

@@ -20,7 +20,7 @@ const generalData = [
     {
         followers_count: 20,
         comments_count: 30,
-        like_count: 0,
+        like_count: 1,
         post_count: 10,
         date: new Date(),
         day: new Date().getDay(),

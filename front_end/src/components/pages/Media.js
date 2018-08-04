@@ -15,9 +15,7 @@ const styles = theme => ({
         flexGrow: 1,
     },
     paper: {
-        padding: theme.spacing.unit * 2,
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
+        borderRadius: 0,
     },
 });
 
@@ -29,7 +27,7 @@ class Media extends Component {
                 <Grid container spacing={24}>
                     {testData.map((prop, key) => {
                         return (
-                            <Grid item xs={12}>
+                            <Grid item xs={12} className={classes.paper}>
                                 <MediaControlCard mediaData={prop}/>
                             </Grid>
                         )
