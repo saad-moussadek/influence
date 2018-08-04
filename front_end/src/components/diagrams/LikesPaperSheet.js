@@ -12,25 +12,25 @@ const styles = theme => ({
     },
 });
 
-function PaperSheet(props) {
-    const { classes } = props;
+function LikesPaperSheet(props) {
+    const { classes, generalData } = props;
 
     return (
         <div>
-            <Paper className={classes.root} elevation={1}>
+            <Paper className={classes.root} elevation={13}>
                 <Typography variant="headline" component="h3">
-                    This is a sheet of paper.
+                    {generalData[generalData.length - 1].like_count}
                 </Typography>
                 <Typography component="p">
-                    Paper can be used to build surface or other elements for your application.
+                    LIKES
                 </Typography>
             </Paper>
         </div>
     );
 }
 
-PaperSheet.propTypes = {
+LikesPaperSheet.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(PaperSheet);
+export default withStyles(styles)(LikesPaperSheet);

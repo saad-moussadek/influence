@@ -20,7 +20,8 @@ import AccountNoPostsCard from "../cards/account/AccountNoPostsCard";
 import MediaLikesCard from "../cards/media/MediaLikesCard";
 import MediaControlCard from "../cards/media/MediaCard";
 import MediaLikeChangeCard from "../cards/media/MediaLikeChangeCard";
-import Media from "./Media";
+import LikesPaperSheet from "../diagrams/LikesPaperSheet";
+import MostLikesPaperSheet from "../diagrams/MostLikesPaperSheet";
 
 
 
@@ -53,7 +54,7 @@ class AlexTest extends Component {
                         <h2>Daily/Weekly/Monthly Trends - NOT DONE</h2>
                         <AccountLikesCard generalData={generalData}/>
                         <h2>Current total no. of likes - NOT DONE</h2>
-
+                        <LikesPaperSheet generalData={generalData}/>
                         <h2>Per post trends/total - NOT DONE</h2>
                         {mediaData.map((prop, key) => {
                             return (
@@ -65,6 +66,8 @@ class AlexTest extends Component {
                         })}
                         <h2>Change from post to post</h2>
                         <MediaLikeChangeCard mediaData={mediaData}/>
+                        <h2>Most liked post/Most popular post</h2>
+                        <MostLikesPaperSheet mediaData={mediaData}/>
                     </Grid>
                     /// Comments ///
                     <Grid item md={12} xs={12}>
