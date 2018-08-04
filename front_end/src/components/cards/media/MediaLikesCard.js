@@ -89,7 +89,9 @@ class MediaLikesCard extends React.Component {
 
         return (
             <div>
-                <Card className={classes.card}>
+                <Card className={classes.card}
+                      image={mediaData.imageURL}
+                      title="Live from space album cover">
                     <CardHeader
                         avatar={avatar}
                         action={

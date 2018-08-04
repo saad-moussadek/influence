@@ -14,14 +14,39 @@ import Legend from "recharts/es6/component/Legend";
 import PropTypes from "prop-types";
 import {withStyles} from "@material-ui/core/styles/index";
 import withTheme from "@material-ui/core/es/styles/withTheme";
+import config from "../../config/config";
+
+const getPostDiffs = function(data){
+    let key;
+    let postLikesDiffs = [];
+    for(key = 0; key < data.length; key ++){
+        if(key !== 0){
+            postLikesDiffs.push(data[key].data[data[key].data.length-1].like_count - data[key-1].data[data[key].data.length-1].like_count);
+        }
+    }
+    return postLikesDiffs;
+};
 
 
 class SimpleBarChart extends React.Component {
     render () {
         let {data, graph, graph2, color, color2} = this.props;
+        if (color == null) color = config.theme.palette.primary[500];
+        if (color2 == null) color2 = config.theme.palette.secondary[500];
+
+        const postLikesDiffs = [];
+
+        let key;
+        let obj;
+        let diffs = getPostDiffs(data);
+        for(key in diffs){
+            obj = {"like_count" : diffs[key]};
+            postLikesDiffs.push(obj);
+        }
+
         return (
             <ResponsiveContainer width={"100%"} height={200}>
-                <BarChart width={600} height={300} data={data}
+                <BarChart width={600} height={300} data={postLikesDiffs}
                           margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                     <CartesianGrid strokeDasharray="3 3"/>
                     <XAxis dataKey="name"/>
@@ -29,7 +54,6 @@ class SimpleBarChart extends React.Component {
                     <Tooltip/>
                     <Legend />
                     <Bar dataKey={graph} fill={color} />
-                    <Bar dataKey={graph2} fill={color2} />
                 </BarChart>
             </ResponsiveContainer>
         );

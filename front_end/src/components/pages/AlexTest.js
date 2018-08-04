@@ -4,6 +4,7 @@ import MuiThemeProvider from "@material-ui/core/es/styles/MuiThemeProvider";
 import Typography from "@material-ui/core/es/Typography/Typography";
 import Router from "react-router";
 import generalData from "../../testData/generalData"
+import mediaData from "../../testData/mediaData"
 import {withStyles} from "@material-ui/core/styles/index";
 import Paper from "@material-ui/core/es/Paper/Paper";
 import Grid from "@material-ui/core/es/Grid/Grid";
@@ -15,8 +16,12 @@ import AccountCommentsCard from "../cards/account/AccountCommentsCard";
 import AccountLikesGrowthCard from "../cards/account/AccountLikesGrowthCard";
 import AccountFollowersGrowthCard from "../cards/account/AccountFollowersGrowthCard";
 import AccountCommentsGrowthCard from "../cards/account/AccountCommentsGrowthCard";
-import AccountLikesPerPostLineBarCard from "../cards/account/AccountLikesPerPostLineBarCard";
 import AccountNoPostsCard from "../cards/account/AccountNoPostsCard";
+import MediaLikesCard from "../cards/media/MediaLikesCard";
+import MediaControlCard from "../cards/media/MediaCard";
+import MediaLikeChangeCard from "../cards/media/MediaLikeChangeCard";
+import Media from "./Media";
+
 
 
 
@@ -37,20 +42,28 @@ class AlexTest extends Component {
         return (
             <div className={classes.root}>
                 <Grid container spacing={24}>
-                    /// No. of published posts ///
+                    <h1>/// No. of published posts ///</h1>
                     <Grid item md={12} xs={12}>
-                        Daily/Weekly/Monthly Trends - NOT DONE! HAVE TO TALK ABOUT BEST OPTIONS!
+                        <h2>Daily/Weekly/Monthly Trends - NOT DONE! HAVE TO TALK ABOUT BEST OPTIONS!</h2>
                         <AccountNoPostsCard generalData={generalData}/>
-                        Currrent no. of published posts - NOT DONE
+                        <h2>Currrent no. of published posts - NOT DONE</h2>
                     </Grid>
-                    /// No. of Likes ///
+                    <h1>/// No. of Likes ///</h1>
                     <Grid item md={12} xs={12}>
-                        Daily/Weekly/Monthly Trends - NOT DONE
-                        Current total no. of likts - NOT DONE
-                        Per post trends/total - NOT DONE
-                        <AccountLikesPerPostLineBarCard generalData={generalData}/>
-                        Currrent no. of published posts - NOT DONE
-                        {/*<Avatar src={10}></Avatar>*/}
+                        <h2>Daily/Weekly/Monthly Trends - NOT DONE</h2>
+                        <AccountLikesCard generalData={generalData}/>
+                        <h2>Current total no. of likes - NOT DONE</h2>
+                        <h2>Per post trends/total - NOT DONE</h2>
+                        {mediaData.map((prop, key) => {
+                            return (
+                                <Grid item xs={12}>
+                                    <h2> Post {key + 1} </h2>
+                                    <MediaControlCard mediaData={prop}/>
+                                </Grid>
+                            )
+                        })}
+                        <h2>Change from post to post</h2>
+                        <MediaLikeChangeCard mediaData={mediaData}/>
                     </Grid>
                     /// Comments ///
                     <Grid item md={12} xs={12}>

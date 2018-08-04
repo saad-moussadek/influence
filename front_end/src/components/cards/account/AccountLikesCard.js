@@ -95,7 +95,7 @@ class AccountFollowersCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={generalData[generalData.length - 1].followers_count + " likes"}
+                        title={generalData[generalData.length - 1].like_count + " likes"}
                         subheader={
                             <div>
                                 {growthIndicator}{growth}

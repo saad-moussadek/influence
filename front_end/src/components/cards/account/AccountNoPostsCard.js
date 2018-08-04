@@ -22,7 +22,6 @@ import AssistantIcon from '@material-ui/icons/Assistant'
 import ThumbsUpIcon from '@material-ui/icons/ThumbUp'
 import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
-import SimpleLineChart from "../../diagrams/BasicChart";
 
 const styles = theme => ({
     card: {
@@ -103,7 +102,7 @@ class AccountNoPostsCard extends React.Component {
                             </div>
                         }
                     />
-                    <SimpleLineChart data={generalData} graph={"post_count"} color={theme.colorPrimary}/>
+                    <BasicChart data={generalData} graph={"post_count"} color={theme.colorPrimary}/>
                 </Card>
             </div>
         );
