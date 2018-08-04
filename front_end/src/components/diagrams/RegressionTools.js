@@ -18,10 +18,10 @@ import regression from "../../../node_modules/regression";
 
 
 let convertDataToRegressionFormat = function (data, graph) {
-    const converted = [];
+    let converted = [];
     for (let i = 0; i < data.length; i++) {
         if (data[i][graph] == null) break;
-        converted[i] = [i, data[i][graph]];
+        converted[i] = [i + 1, data[i][graph]];
     }
     return converted;
 };
@@ -48,10 +48,8 @@ let getBestRegression = function (data, graph) {
     if (resultSquared.r2 > maximumR2) result = resultSquared;
     if (resultCubed.r2 > maximumR2) result = resultCubed;
     if (resultLogarithmic.r2 > maximumR2) result = resultLogarithmic;
-    if (resultExponential.r2 > maximumR2) result = resultExponential;
-    if (resultPower.r2 > maximumR2) result = resultPower;
-
-    console.log(result)
+    // if (resultExponential.r2 > maximumR2) result = resultExponential;
+    // if (resultPower.r2 > maximumR2) result = resultPower;
 
     return result;
 };
@@ -63,9 +61,9 @@ let addRegression = function (data, graph, predict) {
         lengthToCover++;
     }
     let result = getBestRegression(data, graph);
-    for (let i = 0; i < lengthToCover; i++) {
+    for (let i = 1; i < lengthToCover; i++) {
         if (data[i] == null) data[i] = {};
-        data[i][graph + "_regression"] = result.predict(i)[1];
+        data[i][graph + "_regression"] = result.predict(i + 1)[1];
         if (data[i][graph] != null) {
             data[i][graph + "_regression"] = null;
             if (data[i + 1] == null || data[i + 1][graph] == null )
