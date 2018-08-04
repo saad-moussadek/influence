@@ -12,9 +12,9 @@ import BasicChart from "../diagrams/BasicChart";
 class SaadTest extends Component {
     render() {
 
-        addRegression(generalData, "like_count", 5);
+        addRegression(generalData, "like_count", 1);
 
-        console.log(generalData)
+        console.log(generalData);
 
         return (
             <div>

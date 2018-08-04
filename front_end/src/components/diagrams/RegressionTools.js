@@ -56,9 +56,13 @@ let getBestRegression = function (data, graph) {
 };
 
 let addRegression = function(data, graph, predict) {
-    let initialLength = data.length + predict;
+    let lengthToCover = predict;
+    for (let i = 0; i < data.length; i++) {
+        if (data[i][graph] == null) break;
+        lengthToCover++;
+    }
     let result = getBestRegression(data, graph);
-    for (let i = 0; i < initialLength; i++) {
+    for (let i = 0; i < lengthToCover; i++) {
         if (data[i] == null) data[i] = {};
          data[i][graph + "_regression"] = result.predict(i)[1];
     }
