@@ -37,11 +37,6 @@ const getMinData = function(data, graph) {
 const gradientOffset = function(data, graph) {
     const dataMax = getMaxData(data, graph);
     const dataMin = getMinData(data, graph);
-    console.log(graph);
-    console.log(data);
-    console.log(dataMin);
-    console.log(dataMax);
-
     if (dataMax <= 0) {
         return 0
     }
