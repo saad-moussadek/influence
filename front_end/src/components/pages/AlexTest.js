@@ -17,12 +17,13 @@ import AccountLikesGrowthCard from "../cards/account/AccountLikesGrowthCard";
 import AccountFollowersGrowthCard from "../cards/account/AccountFollowersGrowthCard";
 import AccountCommentsGrowthCard from "../cards/account/AccountCommentsGrowthCard";
 import AccountNoPostsCard from "../cards/account/AccountNoPostsCard";
+import AccountTotalPostCard from "../cards/account/AccountTotalPostCard";
 import MediaLikesCard from "../cards/media/MediaLikesCard";
 import MediaControlCard from "../cards/media/MediaCard";
 import MediaLikeChangeCard from "../cards/media/MediaLikeChangeCard";
 import LikesPaperSheet from "../sheets/LikesPaperSheet";
 import MostLikesPaperSheet from "../sheets/MostLikesPaperSheet";
-import PostsPaperSheet from "../sheets/PostsPaperSheet";
+import AccountTotalLikeCard from "../cards/account/AccountTotalLikeCard";
 
 
 
@@ -49,14 +50,14 @@ class AlexTest extends Component {
                         <h2>Daily/Weekly/Monthly Trends - NOT DONE! HAVE TO TALK ABOUT BEST OPTIONS!</h2>
                         <AccountNoPostsCard generalData={generalData}/>
                         <h2>Currrent no. of published posts - NOT DONE</h2>
-                        <PostsPaperSheet generalData={generalData}/>
+                        <AccountTotalPostCard generalData={generalData}/>
                     </Grid>
                     <h1>/// No. of Likes ///</h1>
                     <Grid item md={12} xs={12}>
                         <h2>Daily/Weekly/Monthly Trends - NOT DONE</h2>
                         <AccountLikesCard generalData={generalData}/>
                         <h2>Current total no. of likes - NOT DONE</h2>
-                        <LikesPaperSheet generalData={generalData}/>
+                        <AccountTotalLikeCard generalData={generalData}/>
                         <h2>Per post trends/total - NOT DONE</h2>
                         {mediaData.map((prop, key) => {
                             return (
