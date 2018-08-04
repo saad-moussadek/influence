@@ -7,6 +7,7 @@ import components from "../../config/componentsList"
 import testData from "../../testData/mediaData";
 import mediaData from "../../testData/mediaData";
 import generalData from "../../testData/generalData";
+import userData from "../../testData/userData"
 import Grid from "@material-ui/core/es/Grid/Grid";
 
 
@@ -18,11 +19,15 @@ class MyDashboard extends Component {
                 <Grid container spacing={24}>
 
                     {components.map((componentInfo, key) => {
-                        return (
-                            <Grid item md={componentInfo.displaySize} xs={12}>
-                                {React.cloneElement(componentInfo.component, {mediaData: mediaData[0], generalData: generalData})}
-                            </Grid>
-                        )
+                        if (userData.myDashboard[componentInfo.name])
+                            return (
+                                <Grid item md={componentInfo.displaySize} xs={12}>
+                                    {React.cloneElement(componentInfo.component, {
+                                        mediaData: mediaData[0],
+                                        generalData: generalData
+                                    })}
+                                </Grid>
+                            )
                     })}
 
                 </Grid>

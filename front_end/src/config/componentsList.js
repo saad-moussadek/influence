@@ -11,34 +11,42 @@ import MediaCard from "../components/cards/media/MediaCard";
 
 const components = [
         {
+            name: "MediaCard",
             component: <MediaCard/>,
             displaySize: 12
         },
         {
+            name: "AccountCommentsCard",
             component: <AccountCommentsCard/>,
             displaySize: 4
         },
         {
+            name: "AccountCommentsGrowthCard",
             component: <AccountCommentsGrowthCard/>,
             displaySize: 4
         },
         {
+            name: "AccountFollowersCard",
             component: <AccountFollowersCard/>,
             displaySize: 4
         },
         {
+            name: "AccountFollowersGrowthCard",
             component: <AccountFollowersGrowthCard/>,
             displaySize: 4
         },
         {
+            name: "AccountLikesCard",
             component: <AccountLikesCard/>,
             displaySize: 4
         },
         {
+            name: "AccountLikesGrowthCard",
             component: <AccountLikesGrowthCard/>,
             displaySize: 4
         },
         {
+            name: "AccountNoPostsCard",
             component: <AccountNoPostsCard/>,
             displaySize: 4
         },

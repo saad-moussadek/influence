@@ -12,7 +12,14 @@ import MediaCard from "../components/cards/media/MediaCard";
 const userData = {
         username: "TEST USER",
         myDashboard: {
-
+            MediaCard: true,
+            AccountCommentsCard: true,
+            AccountCommentsGrowthCard: false,
+            AccountFollowersCard: true,
+            AccountFollowersGrowthCard: true,
+            AccountLikesGrowthCard: false,
+            AccountLikesCard: true,
+            AccountNoPostsCard: false,
         }
     }
 ;
