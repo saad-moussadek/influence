@@ -20,8 +20,9 @@ import AccountNoPostsCard from "../cards/account/AccountNoPostsCard";
 import MediaLikesCard from "../cards/media/MediaLikesCard";
 import MediaControlCard from "../cards/media/MediaCard";
 import MediaLikeChangeCard from "../cards/media/MediaLikeChangeCard";
-import LikesPaperSheet from "../diagrams/LikesPaperSheet";
-import MostLikesPaperSheet from "../diagrams/MostLikesPaperSheet";
+import LikesPaperSheet from "../sheets/LikesPaperSheet";
+import MostLikesPaperSheet from "../sheets/MostLikesPaperSheet";
+import PostsPaperSheet from "../sheets/PostsPaperSheet";
 
 
 
@@ -48,6 +49,7 @@ class AlexTest extends Component {
                         <h2>Daily/Weekly/Monthly Trends - NOT DONE! HAVE TO TALK ABOUT BEST OPTIONS!</h2>
                         <AccountNoPostsCard generalData={generalData}/>
                         <h2>Currrent no. of published posts - NOT DONE</h2>
+                        <PostsPaperSheet generalData={generalData}/>
                     </Grid>
                     <h1>/// No. of Likes ///</h1>
                     <Grid item md={12} xs={12}>
@@ -69,23 +71,6 @@ class AlexTest extends Component {
                         <h2>Most liked post/Most popular post</h2>
                         <MostLikesPaperSheet mediaData={mediaData}/>
                     </Grid>
-                    /// Comments ///
-                    <Grid item md={12} xs={12}>
-                        <AccountLikesCard generalData={generalData}/>
-                    </Grid>
-                    /// Total Followers ///
-                    <Grid item md={12} xs={12}>
-                        <AccountCommentsCard generalData={generalData}/>
-                    </Grid>
-                    <Grid item md={12} xs={12}>
-                        <AccountFollowersGrowthCard generalData={generalData}/>
-                    </Grid>
-                    <Grid item md={12} xs={12}>
-                        <AccountLikesGrowthCard generalData={generalData}/>
-                    </Grid>
-                    <Grid item md={12} xs={12}>
-                        <AccountCommentsGrowthCard generalData={generalData}/>
-                    </Grid>
                 </Grid>
             </div>
         );
@@ -98,4 +83,21 @@ AlexTest.propTypes = {
 };
 
 export default withStyles(styles, {withTheme: true})(AlexTest);
+
+/*
+                    <Grid item md={12} xs={12}>
+                        <AccountLikesCard generalData={generalData}/>
+                    </Grid>
+                    <Grid item md={12} xs={12}>
+                        <AccountCommentsCard generalData={generalData}/>
+                    </Grid>
+                    <Grid item md={12} xs={12}>
+                        <AccountFollowersGrowthCard generalData={generalData}/>
+                    </Grid>
+                    <Grid item md={12} xs={12}>
+                        <AccountLikesGrowthCard generalData={generalData}/>
+                    </Grid>
+                    <Grid item md={12} xs={12}>
+                        <AccountCommentsGrowthCard generalData={generalData}/>
+                    </Grid>*/
 

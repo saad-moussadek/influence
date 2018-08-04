@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import config from "../../config/config";
 
 const styles = theme => ({
     root: {
@@ -12,25 +13,27 @@ const styles = theme => ({
     },
 });
 
-function LikesPaperSheet(props) {
+function PostsPaperSheet(props) {
     const { classes, generalData } = props;
+
+    console.log("generalData", generalData);
 
     return (
         <div>
             <Paper className={classes.root} elevation={13}>
                 <Typography variant="headline" component="h3">
-                    {generalData[generalData.length - 1].like_count}
+                    {generalData[generalData.length - config.prediction - 1].post_count}
                 </Typography>
                 <Typography component="p">
-                    LIKES
+                    POSTS
                 </Typography>
             </Paper>
         </div>
     );
 }
 
-LikesPaperSheet.propTypes = {
+PostsPaperSheet.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(LikesPaperSheet);
+export default withStyles(styles)(PostsPaperSheet);
