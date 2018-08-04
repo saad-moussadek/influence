@@ -43,13 +43,13 @@ let getBestRegression = function (data, graph) {
     resultLinear.type = "power";
 
     let result;
-    let minimumR2 = 1;
-    if (resultLinear.r2 < minimumR2) result = resultLinear;
-    if (resultSquared.r2 < minimumR2) result = resultSquared;
-    if (resultCubed.r2 < minimumR2) result = resultCubed;
-    if (resultLogarithmic.r2 < minimumR2) result = resultLogarithmic;
-    if (resultExponential.r2 < minimumR2) result = resultExponential;
-    if (resultPower.r2 < minimumR2) result = resultPower;
+    let maximumR2 = 0;
+    if (resultLinear.r2 > maximumR2) result = resultLinear;
+    if (resultSquared.r2 > maximumR2) result = resultSquared;
+    if (resultCubed.r2 > maximumR2) result = resultCubed;
+    if (resultLogarithmic.r2 > maximumR2) result = resultLogarithmic;
+    if (resultExponential.r2 > maximumR2) result = resultExponential;
+    if (resultPower.r2 > maximumR2) result = resultPower;
 
     return result;
 };

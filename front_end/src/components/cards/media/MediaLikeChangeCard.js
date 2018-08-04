@@ -25,6 +25,7 @@ import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
 import Chip from "@material-ui/core/es/Chip/Chip";
 import SimpleBarChart from "../../diagrams/SimpleBarChart";
+import addRegression from "../../diagrams/RegressionTools";
 
 const styles = theme => ({
     card: {
@@ -65,7 +66,6 @@ const styles = theme => ({
 class MediaLikeChangeCard extends React.Component {
     render() {
         const {classes, theme, mediaData} = this.props;
-
         //let growth = 0.1 * (-1000 + Math.round(1000 * (mediaData.data[mediaData.data.length - 1] / mediaData.data[mediaData.data - 2])));
         let growth = 1;
 

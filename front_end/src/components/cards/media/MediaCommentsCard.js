@@ -65,7 +65,7 @@ const styles = theme => ({
 class MediaCommentsCard extends React.Component {
     render() {
         const {classes, theme, mediaData} = this.props;
-        addRegression(mediaData, "comments_count", config.predict);
+        addRegression(mediaData.data, "comments_count", config.prediction);
         let growth = 0.1 * (-1000 + Math.round(1000 * (mediaData.data[mediaData.data.length - 1].comments_count / mediaData.data[mediaData.data.length - 2].comments_count)));
         let avatar;
         let growthIndicator;
