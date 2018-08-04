@@ -22,6 +22,8 @@ import AssistantIcon from '@material-ui/icons/Assistant'
 import ThumbsUpIcon from '@material-ui/icons/ThumbUp'
 import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
+import config from "../../../config/config";
+import addRegression from "../../diagrams/RegressionTools";
 
 const styles = theme => ({
     card: {
@@ -61,7 +63,8 @@ const styles = theme => ({
 class AccountFollowersCard extends React.Component {
     render() {
         const {classes, theme, generalData} = this.props;
-        let growth = generalData[generalData.length - 1].like_count - generalData[generalData.length - 2].like_count;
+        addRegression(generalData, "like_count", config.prediction);
+        let growth = generalData[generalData.length - 1 - config.prediction].like_count - generalData[generalData.length - 2 - config.prediction].like_count;
         let avatar;
         let growthIndicator;
         if (growth > 0) {
@@ -95,7 +98,7 @@ class AccountFollowersCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={generalData[generalData.length - 1].like_count + " likes"}
+                        title={generalData[generalData.length - config.prediction - 1].like_count + " likes"}
                         subheader={
                             <div>
                                 {growthIndicator}{growth}

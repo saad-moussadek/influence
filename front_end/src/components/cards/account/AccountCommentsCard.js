@@ -24,6 +24,8 @@ import config from '../../../config/config'
 import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
 import Chip from "@material-ui/core/es/Chip/Chip";
+import generalData from "../../../testData/generalData";
+import addRegression from "../../diagrams/RegressionTools";
 
 const styles = theme => ({
     card: {
@@ -63,7 +65,8 @@ const styles = theme => ({
 class AccountCommentsCard extends React.Component {
     render() {
         const {classes, theme, generalData} = this.props;
-        let growth = generalData[generalData.length - 1].comments_count - generalData[generalData.length - 2].comments_count;
+        addRegression(generalData, "comments_count", config.prediction);
+        let growth = generalData[generalData.length - 1 - config.prediction].comments_count - generalData[generalData.length - 2 - config.prediction].comments_count;
         let avatar;
         let growthIndicator;
         if (growth > 0) {
@@ -97,7 +100,7 @@ class AccountCommentsCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={generalData[generalData.length - 1].comments_count + " comments"}
+                        title={generalData[generalData.length - config.prediction - 1].comments_count + " comments"}
                         subheader={
                             <div>
                                 {growthIndicator}{growth}

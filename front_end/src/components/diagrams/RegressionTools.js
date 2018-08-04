@@ -17,7 +17,6 @@ import withTheme from "@material-ui/core/es/styles/withTheme";
 import regression from "../../../node_modules/regression";
 
 
-
 let convertDataToRegressionFormat = function (data, graph) {
     const converted = [];
     for (let i = 0; i < data.length; i++) {
@@ -55,7 +54,7 @@ let getBestRegression = function (data, graph) {
     return result;
 };
 
-let addRegression = function(data, graph, predict) {
+let addRegression = function (data, graph, predict) {
     let lengthToCover = predict;
     for (let i = 0; i < data.length; i++) {
         if (data[i][graph] == null) break;
@@ -64,7 +63,12 @@ let addRegression = function(data, graph, predict) {
     let result = getBestRegression(data, graph);
     for (let i = 0; i < lengthToCover; i++) {
         if (data[i] == null) data[i] = {};
-         data[i][graph + "_regression"] = result.predict(i)[1];
+        data[i][graph + "_regression"] = result.predict(i)[1];
+        if (data[i][graph] != null) {
+            data[i][graph + "_regression"] = null;
+            if (data[i + 1] == null || data[i + 1][graph] == null )
+                data[i][graph + "_regression"] = data[i][graph];
+        }
     }
 };
 

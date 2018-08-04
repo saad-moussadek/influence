@@ -7,18 +7,15 @@ import generalData from "../../testData/generalData";
 import mediaData from "../../testData/mediaData";
 import addRegression from "../diagrams/RegressionTools"
 import BasicChart from "../diagrams/BasicChart";
-
+import regressionData from "../../testData/regressionData";
+import config from "../../config/config";
 
 class SaadTest extends Component {
     render() {
-
-        addRegression(generalData, "like_count", 1);
-
-        console.log(generalData);
-
+        addRegression(generalData, "like_count", config.prediction);
         return (
             <div>
-                <BasicChart data={generalData} graph={"like_count"} graph2={"like_count_regression"}/>
+                <BasicChart data={generalData} graph={"like_count"}/>
             </div>
         );
     }

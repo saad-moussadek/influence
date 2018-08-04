@@ -23,6 +23,8 @@ import CommentIcon from '@material-ui/icons/Comment'
 import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
 import GrowthChart from "../../diagrams/GrowthChart";
+import addRegression from "../../diagrams/RegressionTools";
+import config from "../../../config/config";
 
 const styles = theme => ({
     card: {
@@ -62,7 +64,7 @@ const styles = theme => ({
 class AccountCommentsGrowthCard extends React.Component {
     render() {
         const {classes, theme, generalData} = this.props;
-        let growthGrowth = Math.round(0.1 * (-1000 + (1000 * (generalData[generalData.length - 1].comments_count_growthDerivative / generalData[generalData.length - 2].comments_count_growthDerivative))));
+        let growthGrowth = Math.round(0.1 * (-1000 + (1000 * (generalData[generalData.length - 1 - config.prediction].comments_count_growthDerivative / generalData[generalData.length - 2 - config.prediction].comments_count_growthDerivative))));
         let avatar;
         let growthIndicator;
         if (growthGrowth > 0) {

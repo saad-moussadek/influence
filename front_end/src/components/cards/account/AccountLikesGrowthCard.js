@@ -23,6 +23,7 @@ import ThumbsUpIcon from '@material-ui/icons/ThumbUp'
 import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
 import GrowthChart from "../../diagrams/GrowthChart";
+import config from "../../../config/config";
 
 const styles = theme => ({
     card: {
@@ -62,7 +63,7 @@ const styles = theme => ({
 class AccountLikesGrowthCard extends React.Component {
     render() {
         const {classes, theme, generalData} = this.props;
-        let growthGrowth = Math.round(0.1 * (-1000 + (1000 * (generalData[generalData.length - 1].like_count_growthDerivative / generalData[generalData.length - 2].like_count_growthDerivative))));
+        let growthGrowth = Math.round(0.1 * (-1000 + (1000 * (generalData[generalData.length - 1 - config.prediction].like_count_growthDerivative / generalData[generalData.length - 2 - config.prediction].like_count_growthDerivative))));
         let avatar;
         let growthIndicator;
         if (growthGrowth > 0) {

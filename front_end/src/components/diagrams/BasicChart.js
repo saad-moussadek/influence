@@ -84,6 +84,8 @@ class BasicChart extends React.Component {
                         <Tooltip/>
                         <Line type="monotone" dataKey={graph} stroke={color} strokeWidth={2.5}/>
                         <Line type="monotone" dataKey={graph2} stroke={color2} strokeWidth={2}/>
+                        <Line type="monotone" dataKey={graph + "_regression"} stroke={color} strokeDasharray="5 5" strokeWidth={2}/>
+                        <Line type="monotone" dataKey={graph2 + "_regression"} stroke={color2} strokeDasharray="5 5" strokeWidth={2}/>
                     </LineChart>
                 </ResponsiveContainer>
                 <ResponsiveContainer width={"100%"} height={this.state.barChartShrink} style={{visibility: this.state.barChartVisibility}}>

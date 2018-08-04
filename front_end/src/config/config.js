@@ -14,6 +14,7 @@ const theme = createMuiTheme({
 
 export default {
     appTitle: "Influence", //Just a code name for now, will change in the future
+    prediction: 2,
     theme: theme,
 }
 
