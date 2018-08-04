@@ -21,6 +21,7 @@ import regression from "../../../node_modules/regression";
 let convertDataToRegressionFormat = function (data, graph) {
     const converted = [];
     for (let i = 0; i < data.length; i++) {
+        if (data[i][graph] == null) break;
         converted[i] = [i, data[i][graph]];
     }
     return converted;
