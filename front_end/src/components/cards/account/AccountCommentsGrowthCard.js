@@ -103,7 +103,7 @@ class AccountCommentsGrowthCard extends React.Component {
                             </div>
                         }
                     />
-                    <GrowthChart data={generalData} graph={"comments_count"} color={theme.colorPrimary} color2={theme.colorPrimary}/>
+                    <GrowthChart data={generalData} graph={"comments_count"}/>
                 </Card>
             </div>
         );

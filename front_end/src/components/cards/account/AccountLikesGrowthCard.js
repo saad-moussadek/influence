@@ -103,7 +103,7 @@ class AccountLikesGrowthCard extends React.Component {
                             </div>
                         }
                     />
-                    <GrowthChart data={generalData} graph={"like_count"} color={green[500]} color2={red[500]}/>
+                    <GrowthChart data={generalData} graph={"like_count"}/>
                 </Card>
             </div>
         );

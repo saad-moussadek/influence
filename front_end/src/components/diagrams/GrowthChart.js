@@ -14,6 +14,7 @@ import PropTypes from "prop-types";
 import {withStyles} from "@material-ui/core/styles/index";
 import withTheme from "@material-ui/core/es/styles/withTheme";
 import getGrowthDerivatives from "../../testData/metaDataFunctions"
+import config from "../../config/config";
 
 const getMaxData = function(data, graph) {
     let max = -1000;
@@ -55,8 +56,9 @@ const gradientOffset = function(data, graph) {
 class GrowthChart extends React.Component {
     render() {
         let {data, graph, graph2, color, color2} = this.props;
+        if (color == null) color = config.theme.palette.primary[500];
+        if (color2 == null) color2 = config.theme.palette.secondary[500];
         let off = gradientOffset(data, graph + "_growthDerivative");
-        console.log(off)
         return (
             <ResponsiveContainer width={"100%"} height={200}>
                 <AreaChart
