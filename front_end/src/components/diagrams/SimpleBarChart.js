@@ -21,7 +21,7 @@ const getPostDiffs = function(data){
     let postLikesDiffs = [];
     for(key = 0; key < data.length; key ++){
         if(key !== 0){
-            postLikesDiffs.push(data[key].data[data[key].data.length-1].like_count - data[key-1].data[data[key].data.length-1].like_count);
+            postLikesDiffs.push(data[key].data[data[key].data.length-config.prediction - 1].like_count - data[key-1].data[data[key].data.length- config.prediction - 1].like_count);
         }
     }
     return postLikesDiffs;
@@ -33,6 +33,8 @@ class SimpleBarChart extends React.Component {
         let {data, graph, graph2, color, color2} = this.props;
         if (color == null) color = config.theme.palette.primary[500];
         if (color2 == null) color2 = config.theme.palette.secondary[500];
+
+        console.log("data", data);
 
         const postLikesDiffs = [];
 

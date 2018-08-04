@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import config from "../../config/config";
 
 const styles = theme => ({
     root: {
@@ -19,8 +20,8 @@ function MostLikesPaperSheet(props) {
     let maxIndex;
     let obj;
     for(key = 0; key < mediaData.length; key ++){
-        if(maxLikes < mediaData[key].data[mediaData[key].data.length - 1].like_count){
-            maxLikes = mediaData[key].data[mediaData[key].data.length - 1].like_count;
+        if(maxLikes < mediaData[key].data[mediaData[key].data.length - config.prediction - 1].like_count){
+            maxLikes = mediaData[key].data[mediaData[key].data.length - config.prediction - 1].like_count;
             obj = mediaData[key].imageURL;
             maxIndex = key;
         }
