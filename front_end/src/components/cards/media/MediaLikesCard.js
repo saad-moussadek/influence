@@ -27,7 +27,7 @@ import Chip from "@material-ui/core/es/Chip/Chip";
 
 const styles = theme => ({
     card: {
-        maxWidth: 400,
+        // maxWidth: 400,
         borderRadius: 0
     },
     media: {

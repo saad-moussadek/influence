@@ -24,10 +24,11 @@ import config from '../../../config/config'
 import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
 import Chip from "@material-ui/core/es/Chip/Chip";
+import addRegression from "../../diagrams/RegressionTools";
 
 const styles = theme => ({
     card: {
-        maxWidth: 400,
+        // maxWidth: 400,
         borderRadius: 0
     },
     media: {
@@ -64,6 +65,7 @@ const styles = theme => ({
 class MediaCommentsCard extends React.Component {
     render() {
         const {classes, theme, mediaData} = this.props;
+        addRegression(mediaData, "comments_count", config.predict);
         let growth = 0.1 * (-1000 + Math.round(1000 * (mediaData.data[mediaData.data.length - 1].comments_count / mediaData.data[mediaData.data.length - 2].comments_count)));
         let avatar;
         let growthIndicator;

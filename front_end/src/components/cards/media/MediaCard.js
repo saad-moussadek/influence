@@ -64,7 +64,7 @@ function MediaControlCard(props) {
                     image={mediaData.imageURL}
                     title="Live from space album cover"
                 />
-                <Grid container spacing={1} className={classes.grid} >
+                <Grid container spacing={0} className={classes.grid} >
                     <Grid item md={4} xs={12}>
                         <MediaImpressionsCard mediaData={mediaData}/>
                     </Grid>
