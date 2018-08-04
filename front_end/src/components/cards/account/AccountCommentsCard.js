@@ -26,6 +26,7 @@ import green from "@material-ui/core/es/colors/green";
 import Chip from "@material-ui/core/es/Chip/Chip";
 import generalData from "../../../testData/generalData";
 import addRegression from "../../diagrams/RegressionTools";
+import AccountCommentsAssistant from "../../assistant/AccountCommentsAssistant";
 
 const styles = theme => ({
     card: {
@@ -96,9 +97,7 @@ class AccountCommentsCard extends React.Component {
                     <CardHeader
                         avatar={avatar}
                         action={
-                            <IconButton>
-                                <AssistantIcon/>
-                            </IconButton>
+                            <AccountCommentsAssistant />
                         }
                         title={generalData[generalData.length - config.prediction - 1].comments_count + " comments"}
                         subheader={
