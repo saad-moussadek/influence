@@ -53,6 +53,7 @@ class AlexTest extends Component {
                         <h2>Daily/Weekly/Monthly Trends - NOT DONE</h2>
                         <AccountLikesCard generalData={generalData}/>
                         <h2>Current total no. of likes - NOT DONE</h2>
+
                         <h2>Per post trends/total - NOT DONE</h2>
                         {mediaData.map((prop, key) => {
                             return (

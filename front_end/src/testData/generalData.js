@@ -4,7 +4,7 @@ const generalData = [
     {
         followers_count: 0,
         comments_count: 0,
-        like_count: 0,
+        like_count: 2000,
         post_count: 0,
         date: new Date(),
         day: new Date().getDay(),
@@ -20,7 +20,7 @@ const generalData = [
     {
         followers_count: 20,
         comments_count: 30,
-        like_count: 1500,
+        like_count: 0,
         post_count: 10,
         date: new Date(),
         day: new Date().getDay(),
@@ -28,7 +28,7 @@ const generalData = [
     {
         followers_count: 20,
         comments_count: 40,
-        like_count: 2000,
+        like_count: 1000,
         post_count: 50,
         date: new Date(),
         day: new Date().getDay(),
@@ -36,7 +36,7 @@ const generalData = [
     {
         followers_count: 20,
         comments_count: 45,
-        like_count: 3000,
+        like_count: 2000,
         post_count: 30,
         date: new Date(),
         day: new Date().getDay(),
