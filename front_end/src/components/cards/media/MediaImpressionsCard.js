@@ -67,7 +67,7 @@ class MediaImpressionsCard extends React.Component {
         const {classes, theme, mediaData} = this.props;
         addRegression(mediaData.data, "impressions_count", config.prediction);
         addRegression(mediaData.data, "reach_count", config.prediction);
-        let growth = 0.1 * (-1000 + Math.round(1000 * (mediaData.data[mediaData.data.length - 1].impressions_count / mediaData.data[mediaData.data.length - 2].impressions_count)));
+        let growth = 0.1 * (-1000 + Math.round(1000 * (mediaData.data[mediaData.data.length - 1 - config.prediction].impressions_count / mediaData.data[mediaData.data.length - 2 - config.prediction].impressions_count)));
         let avatar;
         let growthIndicator;
         if (growth > 0) {
@@ -101,7 +101,7 @@ class MediaImpressionsCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={mediaData.data[mediaData.data.length - 1].impressions_count + " impressions"}
+                        title={mediaData.data[mediaData.data.length - 1 - config.prediction].impressions_count + " impressions"}
                         subheader={
                             <div>
                                 {growthIndicator}{growth + "%"}

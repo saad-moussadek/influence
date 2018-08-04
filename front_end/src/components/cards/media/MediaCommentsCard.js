@@ -66,7 +66,7 @@ class MediaCommentsCard extends React.Component {
     render() {
         const {classes, theme, mediaData} = this.props;
         addRegression(mediaData.data, "comments_count", config.prediction);
-        let growth = 0.1 * (-1000 + Math.round(1000 * (mediaData.data[mediaData.data.length - 1].comments_count / mediaData.data[mediaData.data.length - 2].comments_count)));
+        let growth = 0.1 * (-1000 + Math.round(1000 * (mediaData.data[mediaData.data.length - 1 - config.prediction].comments_count / mediaData.data[mediaData.data.length - 2 - config.prediction].comments_count)));
         let avatar;
         let growthIndicator;
         if (growth > 0) {
@@ -100,7 +100,7 @@ class MediaCommentsCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={mediaData.data[mediaData.data.length - 1].comments_count + " comments"}
+                        title={mediaData.data[mediaData.data.length - 1 - config.prediction].comments_count + " comments"}
                         subheader={
                             <div>
                                 {growthIndicator}{growth + "%"}

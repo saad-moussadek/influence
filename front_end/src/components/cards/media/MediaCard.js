@@ -56,7 +56,7 @@ function MediaControlCard(props) {
     return (
         <div>
             <Typography className={classes.title} color="textSecondary">
-                {"Uploaded on " + mediaData.data[mediaData.data.length - 1].date.toDateString()}
+                {"Uploaded on " + mediaData.data[0].date.toDateString()}
             </Typography>
             <Card className={classes.card}>
                 <CardMedia
