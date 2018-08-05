@@ -22,8 +22,9 @@ import MediaLikesCard from "../cards/media/MediaLikesCard";
 import MediaControlCard from "../cards/media/MediaCard";
 import MediaLikeChangeCard from "../cards/media/MediaLikeChangeCard";
 import AccountTotalLikeCard from "../cards/account/AccountTotalLikeCard";
-import MediaMostLikedCard from "../cards/media/MediaMostLikedCard";
-
+import MediaMostPopularCard from "../cards/media/MediaMostPopularCard";
+import AccountTotalCommentCard from "../cards/account/AccountTotalCommentCard";
+import AccountTotalFollowerCard from "../cards/account/AccountTotalFollowerCard";
 
 
 
@@ -48,15 +49,27 @@ class AlexTest extends Component {
                     <Grid item md={12} xs={12}>
                         <h2>Daily/Weekly/Monthly Trends - NOT DONE! HAVE TO TALK ABOUT BEST OPTIONS!</h2>
                         <AccountNoPostsCard generalData={generalData}/>
+                    </Grid>
+                    <Grid item md={3} xs={12}>
                         <h2>Currrent no. of published posts - NOT DONE</h2>
                         <AccountTotalPostCard generalData={generalData}/>
+                    </Grid>
+                    <Grid item md={3} xs={12}>
+                        <h2>Currrent no. of followers - NOT DONE</h2>
+                        <AccountTotalFollowerCard generalData={generalData}/>
+                    </Grid>
+                    <Grid item md={3} xs={12}>
+                        <h2>Current total no. of likes - NOT DONE</h2>
+                        <AccountTotalLikeCard generalData={generalData}/>
+                    </Grid>
+                    <Grid item md={3} xs={12}>
+                        <h2>Current total no. of comments - NOT DONE</h2>
+                        <AccountTotalCommentCard generalData={generalData}/>
                     </Grid>
                     <h1>/// No. of Likes ///</h1>
                     <Grid item md={12} xs={12}>
                         <h2>Daily/Weekly/Monthly Trends - NOT DONE</h2>
                         <AccountLikesCard generalData={generalData}/>
-                        <h2>Current total no. of likes - NOT DONE</h2>
-                        <AccountTotalLikeCard generalData={generalData}/>
                         <h2>Per post trends/total - NOT DONE</h2>
                         {mediaData.map((prop, key) => {
                             console.log("prop", prop);
@@ -69,8 +82,22 @@ class AlexTest extends Component {
                         })}
                         <h2>Change from post to post</h2>
                         <MediaLikeChangeCard mediaData={mediaData}/>
-                        <h2>Most liked post/Most popular post</h2>
-                        <MediaMostLikedCard mediaData={mediaData} graph = {"like_count"}/>
+                    </Grid>
+                    <Grid item md = {3} xs={12}>
+                        <h2>Most liked post</h2>
+                        <MediaMostPopularCard mediaData={mediaData} graph = {"like_count"}/>
+                    </Grid>
+                    <Grid item md = {3} xs={12}>
+                        <h2>Most commented post</h2>
+                        <MediaMostPopularCard mediaData={mediaData} graph = {"comments_count"}/>
+                    </Grid>
+                    <Grid item md = {3} xs={12}>
+                        <h2>Most reached post</h2>
+                        <MediaMostPopularCard mediaData={mediaData} graph = {"reach_count"}/>
+                    </Grid>
+                    <Grid item md = {3} xs={12}>
+                        <h2>Most impressions post</h2>
+                        <MediaMostPopularCard mediaData={mediaData} graph = {"impressions_count"}/>
                     </Grid>
                 </Grid>
             </div>

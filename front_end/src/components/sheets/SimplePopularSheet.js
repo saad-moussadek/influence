@@ -16,8 +16,6 @@ const styles = theme => ({
 function SimplePopularSheet(props) {
     const { classes, maxLikes, message } = props;
 
-    console.log("STRSTR", message);
-
     return (
         <div>
             <Paper className={classes.root} elevation={13}>

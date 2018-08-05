@@ -16,19 +16,21 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import IncreaseIcon from '@material-ui/icons/TrendingUp'
-import DecreaseIcon from '@material-ui/icons/TrendingDown'
 import AssistantIcon from '@material-ui/icons/Assistant'
 import ThumbsUpIcon from '@material-ui/icons/ThumbUp'
+import IncreaseIcon from '@material-ui/icons/ArrowDropUp'
+import DecreaseIcon from '@material-ui/icons/ArrowDropDown'
+import config from '../../../config/config'
 import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
-import config from "../../../config/config";
+import Chip from "@material-ui/core/es/Chip/Chip";
 import addRegression from "../../diagrams/RegressionTools";
-import SimplePaperSheet from "../../sheets/SimplePaperSheet";
+import SimplePopularPaperSheet from "../../sheets/SimplePopularSheet";
 
 const styles = theme => ({
     card: {
         // maxWidth: 400,
+        borderRadius: 0
     },
     media: {
         height: 0,
@@ -61,10 +63,54 @@ const styles = theme => ({
     },
 });
 
-class AccountTotalCommentCard extends React.Component {
+function displayMessage(maxLikes, graph){
+    if(graph === "like_count"){
+        if(maxLikes ===1) {
+            return "LIKE";
+        } else {
+            return "LIKES"
+        }
+    } else if(graph === "comments_count"){
+        if(maxLikes ===1) {
+            return "COMMENT";
+        } else {
+            return "COMMENTS"
+        }
+    } else if(graph === "reach_count"){
+        if(maxLikes ===1) {
+            return "REACH";
+        } else {
+            return "REACHES"
+        }
+    } else if(graph === "impressions_count"){
+        if(maxLikes ===1) {
+            return "IMPRESSION";
+        } else {
+            return "IMPRESSIONS"
+        }
+    }
+}
+
+class MediaMostPopularCard extends React.Component {
     render() {
-        const {classes, theme, generalData} = this.props;
-        let growth = generalData[generalData.length - 1 - config.prediction].comments_count - generalData[generalData.length - 2 - config.prediction].comments_count;
+        const {classes, theme, mediaData, graph} = this.props;
+        console.log("mediaDataaa", graph);
+
+        let key;
+        let maxLikes = -1;
+        let maxIndex;
+        let obj;
+
+        for(key = 0; key < mediaData.length; key ++){
+            if(maxLikes < mediaData[key].data[mediaData[key].data.length - config.prediction - 1][graph]){
+                maxLikes = mediaData[key].data[mediaData[key].data.length - config.prediction - 1][graph];
+                obj = mediaData[key].imageURL;
+                maxIndex = key;
+            }
+            console.log("Major Key", key);
+        }
+
+        let growth = 0.1 * (-1000 + Math.round(1000 * (mediaData[maxIndex].data[mediaData[maxIndex].data.length - 1 - config.prediction][graph] / mediaData[maxIndex].data[mediaData[maxIndex].data.length - 2 - config.prediction][graph])));
         let avatar;
         let growthIndicator;
         if (growth > 0) {
@@ -88,9 +134,13 @@ class AccountTotalCommentCard extends React.Component {
             );
         }
 
+        let str = displayMessage(maxLikes, graph);
+
         return (
             <div>
-                <Card className={classes.card}>
+                <Card className={classes.card}
+                      image={mediaData.imageURL}
+                      title="Live from space album cover">
                     <CardHeader
                         avatar={avatar}
                         action={
@@ -98,24 +148,24 @@ class AccountTotalCommentCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={generalData[generalData.length - config.prediction - 1].comments_count + " comments"}
+                        title={mediaData[maxIndex].data[mediaData[maxIndex].data.length - 1 - config.prediction][graph] + " " + str}
                         subheader={
                             <div>
-                                {growthIndicator}{growth}
+                                {growthIndicator}{growth + "%"}
                             </div>
                         }
                     />
-                    <SimplePaperSheet data={generalData} graph={"comments_count"} color={theme.colorPrimary}/>
+                    <SimplePopularPaperSheet maxLikes={maxLikes} message={str} color={theme.colorPrimary}/>
                 </Card>
             </div>
         );
     }
 }
 
-AccountTotalCommentCard.propTypes = {
+MediaMostPopularCard.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
-    generalData: PropTypes.object.isRequired,
+    mediaData: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, {withTheme: true})(AccountTotalCommentCard);
+export default withStyles(styles, {withTheme: true})(MediaMostPopularCard);

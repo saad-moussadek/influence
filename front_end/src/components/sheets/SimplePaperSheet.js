@@ -32,6 +32,12 @@ function displayMessage(data, graph){
         } else {
             return "COMMENTS"
         }
+    } else if(graph === "followers_count"){
+        if(data[data.length - config.prediction - 1][graph] ===1) {
+            return "FOLLOWER";
+        } else {
+            return "FOLLOWERS"
+        }
     }
 }
 

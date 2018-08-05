@@ -98,7 +98,7 @@ class AccountTotalLikeCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={generalData[generalData.length - config.prediction - 1].post_count + " posts"}
+                        title={generalData[generalData.length - config.prediction - 1].post_count + " likes"}
                         subheader={
                             <div>
                                 {growthIndicator}{growth}

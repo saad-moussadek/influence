@@ -70,7 +70,7 @@ const media = [
             {
                 reach_count: 20000,
                 impressions_count: 23000,
-                comments_count: 35,
+                comments_count: 40,
                 like_count: 2000,
                 date: new Date(),
                 day: new Date().getDay(),
@@ -106,8 +106,8 @@ const media = [
                 day: new Date().getDay(),
             },
             {
-                reach_count: 20000,
-                impressions_count: 23000,
+                reach_count: 50000,
+                impressions_count: 30000,
                 comments_count: 35,
                 like_count: 2600,
                 date: new Date(),
