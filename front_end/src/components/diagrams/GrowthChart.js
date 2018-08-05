@@ -15,6 +15,7 @@ import {withStyles} from "@material-ui/core/styles/index";
 import withTheme from "@material-ui/core/es/styles/withTheme";
 import getGrowthDerivatives from "../../testData/metaDataFunctions"
 import config from "../../config/config";
+import CustomTooltip from "../tooltips/CustomTooltip";
 
 const getMaxData = function(data, graph) {
     let max = -1000;
@@ -64,7 +65,7 @@ class GrowthChart extends React.Component {
                 >
                     <CartesianGrid strokeDasharray="3 3"/>
                     <XAxis dataKey="date"/>
-                    <Tooltip/>
+                    <Tooltip content={<CustomTooltip/>}/>
                     <ReferenceLine y={0} label="" stroke="red"/>
                     <defs>
                         <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">

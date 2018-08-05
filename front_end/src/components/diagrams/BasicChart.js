@@ -19,6 +19,7 @@ import config from "../../config/config";
 import IconButton from "@material-ui/core/es/IconButton/IconButton";
 import ShowChart from "@material-ui/icons/es/ShowChart";
 import BarChartIcon from "@material-ui/icons/BarChart";
+import CustomTooltip from "../tooltips/CustomTooltip";
 
 const styles = theme => ({
     button: {
@@ -81,7 +82,7 @@ class BasicChart extends React.Component {
                                margin={{top: 5, right: 30, left: 20, bottom: 5}} style={{visibility: this.state.lineChartVisibility}}>
                         <XAxis dataKey="date"/>
                         <CartesianGrid strokeDasharray="3 3"/>
-                        <Tooltip/>
+                        <Tooltip content={<CustomTooltip/>}/>
                         <Line type="monotone" dataKey={graph} stroke={color} strokeWidth={2.5}/>
                         <Line type="monotone" dataKey={graph2} stroke={color2} strokeWidth={2}/>
                         <Line type="monotone" dataKey={graph + "_regression"} stroke={color} strokeDasharray="3 3" strokeWidth={2}/>
@@ -93,7 +94,7 @@ class BasicChart extends React.Component {
                               margin={{top: 5, right: 30, left: 20, bottom: 5}} style={{visibility: this.state.barChartVisibility}}>
                         <XAxis dataKey="date"/>
                         <CartesianGrid strokeDasharray="3 3"/>
-                        <Tooltip/>
+                        <Tooltip content={<CustomTooltip/>}/>
                         <Bar dataKey={graph} fill={color} strokeWidth={2.5}/>
                         {
                             secondBar

@@ -15,6 +15,7 @@ import PropTypes from "prop-types";
 import {withStyles} from "@material-ui/core/styles/index";
 import withTheme from "@material-ui/core/es/styles/withTheme";
 import config from "../../config/config";
+import CustomTooltip from "../tooltips/CustomTooltip";
 
 const getPostDiffs = function(data){
     let key;
@@ -53,7 +54,7 @@ class SimpleBarChart extends React.Component {
                     <CartesianGrid strokeDasharray="3 3"/>
                     <XAxis dataKey="name"/>
                     <YAxis/>
-                    <Tooltip/>
+                    <Tooltip content={<CustomTooltip/>}/>
                     <Legend />
                     <Bar dataKey={graph} fill={color} />
                 </BarChart>
