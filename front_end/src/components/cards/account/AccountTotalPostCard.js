@@ -62,6 +62,34 @@ const styles = theme => ({
     },
 });
 
+function displayMessage(data, graph) {
+    if (graph === "like_count") {
+        if (data[data.length - config.prediction - 1][graph] === 1) {
+            return "LIKE";
+        } else {
+            return "LIKES"
+        }
+    } else if (graph === "post_count") {
+        if (data[data.length - config.prediction - 1][graph] === 1) {
+            return "POST";
+        } else {
+            return "POSTS"
+        }
+    } else if (graph === "comments_count") {
+        if (data[data.length - config.prediction - 1][graph] === 1) {
+            return "COMMENT";
+        } else {
+            return "COMMENTS"
+        }
+    } else if (graph === "followers_count") {
+        if (data[data.length - config.prediction - 1][graph] === 1) {
+            return "FOLLOWER";
+        } else {
+            return "FOLLOWERS"
+        }
+    }
+}
+
 class AccountTotalPostCardCard extends React.Component {
     render() {
         const {classes, theme, generalData} = this.props;
@@ -89,25 +117,33 @@ class AccountTotalPostCardCard extends React.Component {
             );
         }
 
+        let title = "POSTS";
+        let totalPosts = generalData[generalData.length - config.prediction - 1].post_count;
+
         return (
             <div>
                 <Card className={classes.card}>
+                    <CardMedia
+                        className={classes.media}
+                        image="https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg"
+                    >
+                    </CardMedia>
                     <CardHeader
+                        style={{textAlign: 'center'}}
                         avatar={avatar}
                         action={
                             <IconButton>
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        //title={generalData[generalData.length - config.prediction - 1].post_count + " posts"}
-                        title={"POSTS"}
+                        title={title}
                         subheader={
                             <div>
                                 {growthIndicator}{growth}
                             </div>
                         }
-                    />
-                    <SimplePaperSheet data={generalData} graph={"post_count"} color={theme.colorPrimary}/>
+                    >
+                    </CardHeader>
                 </Card>
             </div>
         );
