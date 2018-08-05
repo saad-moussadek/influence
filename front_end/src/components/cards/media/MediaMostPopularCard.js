@@ -94,7 +94,6 @@ function displayMessage(maxLikes, graph){
 class MediaMostPopularCard extends React.Component {
     render() {
         const {classes, theme, mediaData, graph} = this.props;
-        console.log("mediaDataaa", graph);
 
         let key;
         let maxLikes = -1;
@@ -107,7 +106,6 @@ class MediaMostPopularCard extends React.Component {
                 obj = mediaData[key].imageURL;
                 maxIndex = key;
             }
-            console.log("Major Key", key);
         }
 
         let growth = 0.1 * (-1000 + Math.round(1000 * (mediaData[maxIndex].data[mediaData[maxIndex].data.length - 1 - config.prediction][graph] / mediaData[maxIndex].data[mediaData[maxIndex].data.length - 2 - config.prediction][graph])));

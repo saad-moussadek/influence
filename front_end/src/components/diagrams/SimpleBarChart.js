@@ -35,8 +35,6 @@ class SimpleBarChart extends React.Component {
         if (color == null) color = config.theme.palette.primary[500];
         if (color2 == null) color2 = config.theme.palette.secondary[500];
 
-        console.log("data", data);
-
         const postLikesDiffs = [];
 
         let key;

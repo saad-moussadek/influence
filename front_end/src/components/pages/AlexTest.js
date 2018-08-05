@@ -72,7 +72,6 @@ class AlexTest extends Component {
                         <AccountLikesCard generalData={generalData}/>
                         <h2>Per post trends/total - NOT DONE</h2>
                         {mediaData.map((prop, key) => {
-                            console.log("prop", prop);
                             return (
                                 <Grid item xs={12}>
                                     <h2> Post {key + 1} </h2>
