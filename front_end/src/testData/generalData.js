@@ -43,7 +43,7 @@ const generalData = [
     },
     {
         followers_count: 25,
-        comments_count: 50,
+        comments_count: 48,
         like_count: 4000,
         post_count: 80,
         date: new Date(),

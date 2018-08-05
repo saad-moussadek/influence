@@ -51,11 +51,8 @@ function SimplePaperSheet(props) {
     return (
         <div>
             <Paper className={classes.root} elevation={13}>
-                <Typography variant="headline" component="h3">
+                <Typography variant="headline" component="h3" align={"center"}>
                     {data[data.length - config.prediction - 1][graph]}
-                </Typography>
-                <Typography component="p">
-                    {str}
                 </Typography>
             </Paper>
         </div>

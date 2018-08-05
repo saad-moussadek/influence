@@ -19,7 +19,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IncreaseIcon from '@material-ui/icons/TrendingUp'
 import DecreaseIcon from '@material-ui/icons/TrendingDown'
 import AssistantIcon from '@material-ui/icons/Assistant'
-import ThumbsUpIcon from '@material-ui/icons/ThumbUp'
+import FollowerIcon from '@material-ui/icons/People'
 import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
 import config from "../../../config/config";
@@ -70,7 +70,7 @@ class AccountTotalFollowerCard extends React.Component {
         if (growth > 0) {
             avatar = (
                 <Avatar className={classes.avatarGreen}>
-                    <ThumbsUpIcon/>
+                    <FollowerIcon/>
                 </Avatar>
             );
             growthIndicator = (
@@ -80,7 +80,7 @@ class AccountTotalFollowerCard extends React.Component {
         else {
             avatar = (
                 <Avatar className={classes.avatarRed}>
-                    <ThumbsUpIcon/>
+                    <FollowerIcon/>
                 </Avatar>
             );
             growthIndicator = (

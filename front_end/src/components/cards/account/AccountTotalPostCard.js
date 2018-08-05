@@ -25,6 +25,7 @@ import green from "@material-ui/core/es/colors/green";
 import config from "../../../config/config";
 import addRegression from "../../diagrams/RegressionTools";
 import SimplePaperSheet from "../../sheets/SimplePaperSheet";
+import PostIcon from '@material-ui/icons/InsertPhoto'
 
 const styles = theme => ({
     card: {
@@ -70,7 +71,7 @@ class AccountTotalPostCardCard extends React.Component {
         if (growth > 0) {
             avatar = (
                 <Avatar className={classes.avatarGreen}>
-                    <ThumbsUpIcon/>
+                    <PostIcon/>
                 </Avatar>
             );
             growthIndicator = (
@@ -80,7 +81,7 @@ class AccountTotalPostCardCard extends React.Component {
         else {
             avatar = (
                 <Avatar className={classes.avatarRed}>
-                    <ThumbsUpIcon/>
+                    <PostIcon/>
                 </Avatar>
             );
             growthIndicator = (
@@ -98,7 +99,8 @@ class AccountTotalPostCardCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={generalData[generalData.length - config.prediction - 1].post_count + " posts"}
+                        //title={generalData[generalData.length - config.prediction - 1].post_count + " posts"}
+                        title={"POSTS"}
                         subheader={
                             <div>
                                 {growthIndicator}{growth}
