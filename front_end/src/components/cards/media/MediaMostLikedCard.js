@@ -25,6 +25,7 @@ import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
 import Chip from "@material-ui/core/es/Chip/Chip";
 import addRegression from "../../diagrams/RegressionTools";
+import SimplePopularPaperSheet from "../../sheets/SimplePopularSheet";
 
 const styles = theme => ({
     card: {
@@ -62,11 +63,48 @@ const styles = theme => ({
     },
 });
 
-class MediaLikesCard extends React.Component {
+function displayMessage(maxLikes, graph){
+    if(graph === "like_count"){
+        if(maxLikes ===1) {
+            return "LIKE";
+        } else {
+            return "LIKES"
+        }
+    } else if(graph === "post_count"){
+        if(maxLikes ===1) {
+            return "POST";
+        } else {
+            return "POSTS"
+        }
+    } else if(graph === "comments_count"){
+        if(maxLikes ===1) {
+            return "COMMENT";
+        } else {
+            return "COMMENTS"
+        }
+    }
+}
+
+class MediaMostLikedCard extends React.Component {
     render() {
-        const {classes, theme, mediaData} = this.props;
-        addRegression(mediaData.data, "like_count", config.prediction);
-        let growth = 0.1 * (-1000 + Math.round(1000 * (mediaData.data[mediaData.data.length - 1 - config.prediction].like_count / mediaData.data[mediaData.data.length - 2 - config.prediction].like_count)));
+        const {classes, theme, mediaData, graph} = this.props;
+        console.log("mediaDataaa", graph);
+
+        let key;
+        let maxLikes = -1;
+        let maxIndex;
+        let obj;
+
+        for(key = 0; key < mediaData.length; key ++){
+            if(maxLikes < mediaData[key].data[mediaData[key].data.length - config.prediction - 1][graph]){
+                maxLikes = mediaData[key].data[mediaData[key].data.length - config.prediction - 1][graph];
+                obj = mediaData[key].imageURL;
+                maxIndex = key;
+            }
+            console.log("Major Key", key);
+        }
+
+        let growth = 0.1 * (-1000 + Math.round(1000 * (mediaData[maxIndex].data[mediaData[maxIndex].data.length - 1 - config.prediction][graph] / mediaData[maxIndex].data[mediaData[maxIndex].data.length - 2 - config.prediction][graph])));
         let avatar;
         let growthIndicator;
         if (growth > 0) {
@@ -90,6 +128,8 @@ class MediaLikesCard extends React.Component {
             );
         }
 
+        let str = displayMessage(maxLikes, graph);
+
         return (
             <div>
                 <Card className={classes.card}
@@ -102,24 +142,24 @@ class MediaLikesCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={mediaData.data[mediaData.data.length - 1 - config.prediction].like_count + " likes"}
+                        title={mediaData[maxIndex].data[mediaData[maxIndex].data.length - 1 - config.prediction][graph] + " " + str}
                         subheader={
                             <div>
                                 {growthIndicator}{growth + "%"}
                             </div>
                         }
                     />
-                    <BasicChart data={mediaData.data} graph={"like_count"} color={theme.colorPrimary}/>
+                    <SimplePopularPaperSheet maxLikes={maxLikes} message={str} color={theme.colorPrimary}/>
                 </Card>
             </div>
         );
     }
 }
 
-MediaLikesCard.propTypes = {
+MediaMostLikedCard.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
     mediaData: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, {withTheme: true})(MediaLikesCard);
+export default withStyles(styles, {withTheme: true})(MediaMostLikedCard);

@@ -13,51 +13,27 @@ const styles = theme => ({
     },
 });
 
-function displayMessage(data, graph){
-    if(graph === "like_count"){
-        if(data[data.length - config.prediction - 1][graph] ===1) {
-            return "LIKE";
-        } else {
-            return "LIKES"
-        }
-    } else if(graph === "post_count"){
-        if(data[data.length - config.prediction - 1][graph] ===1) {
-            return "POST";
-        } else {
-            return "POSTS"
-        }
-    } else if(graph === "comments_count"){
-        if(data[data.length - config.prediction - 1][graph] ===1) {
-            return "COMMENT";
-        } else {
-            return "COMMENTS"
-        }
-    }
-}
+function SimplePopularSheet(props) {
+    const { classes, maxLikes, message } = props;
 
-function SimplePopularPaperSheet(props) {
-    const { classes, data, graph } = props;
-
-    let str = displayMessage(data, graph);
-
-
+    console.log("STRSTR", message);
 
     return (
         <div>
             <Paper className={classes.root} elevation={13}>
                 <Typography variant="headline" component="h3">
-                    {data[data.length - config.prediction - 1][graph]}
+                    {maxLikes}
                 </Typography>
                 <Typography component="p">
-                    {str}
+                    {message}
                 </Typography>
             </Paper>
         </div>
     );
 }
 
-SimplePopularPaperSheet.propTypes = {
+SimplePopularSheet.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SimplePopularPaperSheet);
+export default withStyles(styles)(SimplePopularSheet);
