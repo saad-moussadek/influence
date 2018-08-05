@@ -84,9 +84,12 @@ const styles = theme => ({
     },
 });
 
+let assist = function(assistantComponent, generalData, mediaData, regression) {
+    if (assistantComponent == null) return null;
+    return React.cloneElement(assistantComponent, {generalData: generalData, mediaData: mediaData, regression: regression});
+};
 
-
-class AccountCommentsAssistant extends React.Component {
+class Assistant extends React.Component {
     state = {
         arrowRef: null,
         open: false,
@@ -94,19 +97,54 @@ class AccountCommentsAssistant extends React.Component {
     };
 
     render() {
-        const {classes, generalData, mediaData, regression} = this.props;
+        const {classes, assistantComponent, generalData, mediaData, regression, fullScreen} = this.props;
+
+        let handleClose = () => {
+            this.setState({open: false});
+        };
+
+        let handleOpen = () => {
+            this.setState({open: true, message: assist(assistantComponent, generalData, mediaData, regression)});
+        };
 
         return (
             <div>
-                {regression.string}
+                <Hidden smDown>
+                    <Tooltip disableFocusListener disableTouchListener title="Assistant">
+                        <IconButton onClick={handleOpen}>
+                            <AssistantIcon/>
+                        </IconButton>
+                    </Tooltip>
+                </Hidden>
+                <Hidden mdUp>
+                    <IconButton onClick={handleOpen}>
+                        <AssistantIcon/>
+                    </IconButton>
+                </Hidden>
+
+
+                <Dialog
+                    fullScreen={fullScreen}
+                    open={this.state.open}
+                    onClose={handleClose}
+                    aria-labelledby="responsive-dialog-title"
+                >
+                    <DialogTitle id="responsive-dialog-title">{"Assistant"}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            {this.state.message}
+                        </DialogContentText>
+                    </DialogContent>
+                </Dialog>
+
             </div>
         );
     }
 }
 
-AccountCommentsAssistant.propTypes = {
+Assistant.propTypes = {
     classes: PropTypes.object.isRequired,
     fullScreen: PropTypes.bool.isRequired,
 };
 
-export default (withStyles(styles)(AccountCommentsAssistant));
+export default withMobileDialog()(withStyles(styles)(Assistant));

@@ -27,6 +27,8 @@ import Chip from "@material-ui/core/es/Chip/Chip";
 import generalData from "../../../testData/generalData";
 import addRegression from "../../diagrams/RegressionTools";
 import AccountCommentsAssistant from "../../assistant/AccountCommentsAssistant";
+import media from "../../../testData/mediaData";
+import Assistant from "../../assistant/Assistant";
 
 const styles = theme => ({
     card: {
@@ -66,7 +68,7 @@ const styles = theme => ({
 class AccountCommentsCard extends React.Component {
     render() {
         const {classes, theme, generalData} = this.props;
-        addRegression(generalData, "comments_count", config.prediction);
+        const regression = addRegression(generalData, "comments_count", config.prediction);
         let growth = generalData[generalData.length - 1 - config.prediction].comments_count - generalData[generalData.length - 2 - config.prediction].comments_count;
         let avatar;
         let growthIndicator;
@@ -97,7 +99,7 @@ class AccountCommentsCard extends React.Component {
                     <CardHeader
                         avatar={avatar}
                         action={
-                            <AccountCommentsAssistant />
+                            <Assistant generalData={generalData} regression={regression} assistantComponent={<AccountCommentsAssistant />}/>
                         }
                         title={generalData[generalData.length - config.prediction - 1].comments_count + " comments"}
                         subheader={

@@ -25,6 +25,7 @@ import green from "@material-ui/core/es/colors/green";
 import GrowthChart from "../../diagrams/GrowthChart";
 import addRegression from "../../diagrams/RegressionTools";
 import config from "../../../config/config";
+import Assistant from "../../assistant/Assistant";
 
 const styles = theme => ({
     card: {
@@ -94,9 +95,7 @@ class AccountCommentsGrowthCard extends React.Component {
                     <CardHeader
                         avatar={avatar}
                         action={
-                            <IconButton>
-                                <AssistantIcon/>
-                            </IconButton>
+                            <Assistant generalData={generalData} regression={null} assistantComponent={null}/>
                         }
                         title={"Comments growth"}
                         subheader={

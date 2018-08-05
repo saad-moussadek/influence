@@ -13,12 +13,12 @@ const components = [
         {
             name: "MediaCard",
             component: <MediaCard/>,
-            displaySize: 12
+            displaySize: 12,
         },
         {
             name: "AccountCommentsCard",
             component: <AccountCommentsCard/>,
-            displaySize: 4
+            displaySize: 4,
         },
         {
             name: "AccountCommentsGrowthCard",

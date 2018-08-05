@@ -70,6 +70,7 @@ let addRegression = function (data, graph, predict) {
                 data[i][graph + "_regression"] = data[i][graph];
         }
     }
+    return result;
 };
 
 export default addRegression;

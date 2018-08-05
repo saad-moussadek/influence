@@ -24,6 +24,7 @@ import BasicChart from '../../diagrams/BasicChart'
 import green from "@material-ui/core/es/colors/green";
 import config from "../../../config/config";
 import addRegression from "../../diagrams/RegressionTools";
+import Assistant from "../../assistant/Assistant";
 
 const styles = theme => ({
     card: {
@@ -63,7 +64,7 @@ const styles = theme => ({
 class AccountNoPostsCard extends React.Component {
     render() {
         const {classes, theme, generalData} = this.props;
-        addRegression(generalData, "post_count", config.prediction);
+        const regression = addRegression(generalData, "post_count", config.prediction);
         let growth = generalData[generalData.length - 1 - config.prediction].post_count - generalData[generalData.length - 2 - config.prediction].post_count;
         let avatar;
         let growthIndicator;
@@ -94,9 +95,7 @@ class AccountNoPostsCard extends React.Component {
                     <CardHeader
                         avatar={avatar}
                         action={
-                            <IconButton>
-                                <AssistantIcon/>
-                            </IconButton>
+                            <Assistant generalData={generalData} regression={regression} assistantComponent={null}/>
                         }
                         title={generalData[generalData.length - config.prediction - 1].post_count + " posts"}
                         subheader={
