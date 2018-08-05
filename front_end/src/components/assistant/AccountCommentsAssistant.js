@@ -9,6 +9,13 @@ import Grid from "@material-ui/core/es/Grid/Grid";
 import ClickAwayListener from "@material-ui/core/es/ClickAwayListener/ClickAwayListener";
 import Tooltip from "@material-ui/core/es/Tooltip/Tooltip";
 import Button from "@material-ui/core/es/Button/Button";
+import DialogTitle from "@material-ui/core/es/DialogTitle/DialogTitle";
+import DialogContent from "@material-ui/core/es/DialogContent/DialogContent";
+import DialogContentText from "@material-ui/core/es/DialogContentText/DialogContentText";
+import DialogActions from "@material-ui/core/es/DialogActions/DialogActions";
+import Dialog from "@material-ui/core/es/Dialog/Dialog";
+import withMobileDialog from "@material-ui/core/es/withMobileDialog/withMobileDialog";
+import Hidden from "@material-ui/core/es/Hidden/Hidden";
 
 const styles = theme => ({
     root: {
@@ -82,25 +89,60 @@ class AccountCommentsAssistant extends React.Component {
         open: false,
     };
 
-    handleTooltipClose = () => {
+
+    handleClose = () => {
         this.setState({open: false});
     };
 
-    handleTooltipOpen = () => {
+    handleOpen = () => {
         this.setState({open: true});
     };
 
     render() {
-        const {classes, generalData} = this.props;
+        const {classes, generalData, mediaData, assistantOption, fullScreen} = this.props;
+
+        let assistantCall = function (generalData, mediaData, assistantOption, component) {
+            component.setState({open: true});
+        };
 
         return (
             <div>
-                <Tooltip title="Add">
+                <Hidden smDown>
+                    <Tooltip disableFocusListener disableTouchListener title="Assistant">
+                        <IconButton onClick={() => assistantCall(generalData, mediaData, assistantOption, this)}>
+                            <AssistantIcon/>
+                        </IconButton>
+                    </Tooltip>
+                </Hidden>
+                <Hidden mdUp>
+                        <IconButton onClick={() => assistantCall(generalData, mediaData, assistantOption, this)}>
+                            <AssistantIcon/>
+                        </IconButton>
+                </Hidden>
 
-                    <IconButton>
-                        <AssistantIcon/>
-                    </IconButton>
-                </Tooltip>
+
+                <Dialog
+                    fullScreen={fullScreen}
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    aria-labelledby="responsive-dialog-title"
+                >
+                    <DialogTitle id="responsive-dialog-title">{"Use Google's location service?"}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            Let Google help apps determine location. This means sending anonymous location data to
+                            Google, even when no apps are running.
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={this.handleClose} color="primary">
+                            Disagree
+                        </Button>
+                        <Button onClick={this.handleClose} color="primary" autoFocus>
+                            Agree
+                        </Button>
+                    </DialogActions>
+                </Dialog>
 
             </div>
         );
@@ -109,6 +151,7 @@ class AccountCommentsAssistant extends React.Component {
 
 AccountCommentsAssistant.propTypes = {
     classes: PropTypes.object.isRequired,
+    fullScreen: PropTypes.bool.isRequired,
 };
 
-export default withStyles(styles)(AccountCommentsAssistant);
+export default withMobileDialog()(withStyles(styles)(AccountCommentsAssistant));
