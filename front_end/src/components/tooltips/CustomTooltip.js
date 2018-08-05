@@ -28,7 +28,7 @@ class CustomTooltip extends React.Component{
                 <div className="custom-tooltip">
                     <p className="label">{`${label} : ${payload[0].value}`}</p>
                     <p className="intro">{this.getIntroOfPage(label)}</p>
-                    <p className="desc">Anything you want can be displayed here.</p>
+                    <p className="desc">Sniggerz</p>
                 </div>
             );
         }
