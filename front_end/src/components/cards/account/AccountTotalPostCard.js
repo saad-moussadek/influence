@@ -117,7 +117,6 @@ class AccountTotalPostCardCard extends React.Component {
             );
         }
 
-        let title = "POSTS";
         let totalPosts = generalData[generalData.length - config.prediction - 1].post_count;
 
         return (
@@ -136,7 +135,7 @@ class AccountTotalPostCardCard extends React.Component {
                                 <AssistantIcon/>
                             </IconButton>
                         }
-                        title={title}
+                        title={generalData[generalData.length - config.prediction - 1].post_count + " posts"}
                         subheader={
                             <div>
                                 {growthIndicator}{growth}

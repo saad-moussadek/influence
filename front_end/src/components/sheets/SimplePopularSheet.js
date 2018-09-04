@@ -14,13 +14,13 @@ const styles = theme => ({
 });
 
 function SimplePopularSheet(props) {
-    const { classes, maxLikes, message } = props;
+    const { classes, max, message } = props;
 
     return (
         <div>
             <Paper className={classes.root} elevation={13}>
                 <Typography variant="headline" component="h3">
-                    {maxLikes}
+                    {max}
                 </Typography>
                 <Typography component="p">
                     {message}

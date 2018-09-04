@@ -2,7 +2,7 @@ import React from "react";
 
 const media = [
     {
-        imageURL: "http://www.gstatic.com/webp/gallery/1.jpg",
+        imageURL: "https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg",
         caption: "This is a caption #caption #photo",
         data: [
             {
@@ -30,7 +30,7 @@ const media = [
                 day: new Date().getDay(),
             },
             {
-                reach_count: 20000,
+                reach_count: 60000,
                 impressions_count: 23000,
                 comments_count: 35,
                 like_count: 1750,
@@ -78,7 +78,7 @@ const media = [
         ]
     },
     {
-        imageURL: "http://www.gstatic.com/webp/gallery/1.jpg",
+        imageURL: "https://pbs.twimg.com/profile_images/875402854252642304/uBHsRxec.jpg",
         caption: "This is a caption #caption #photo",
         data: [
             {

@@ -26,6 +26,8 @@ import green from "@material-ui/core/es/colors/green";
 import Chip from "@material-ui/core/es/Chip/Chip";
 import addRegression from "../../diagrams/RegressionTools";
 import SimplePopularPaperSheet from "../../sheets/SimplePopularSheet";
+import FollowerIcon from "@material-ui/icons/People";
+import CommentIcon from "@material-ui/icons/Comment";
 
 const styles = theme => ({
     card: {
@@ -63,31 +65,55 @@ const styles = theme => ({
     },
 });
 
-function displayMessage(maxLikes, graph){
-    if(graph === "like_count"){
-        if(maxLikes ===1) {
-            return "LIKE";
+function displayMessage(max, graph) {
+    if (graph === "like_count") {
+        if (max === 1) {
+            return "Like";
         } else {
-            return "LIKES"
+            return "Likes"
         }
-    } else if(graph === "comments_count"){
-        if(maxLikes ===1) {
-            return "COMMENT";
+    } else if (graph === "comments_count") {
+        if (max === 1) {
+            return "Comment";
         } else {
-            return "COMMENTS"
+            return "Comments"
         }
-    } else if(graph === "reach_count"){
-        if(maxLikes ===1) {
-            return "REACH";
+    } else if (graph === "reach_count") {
+        if (max === 1) {
+            return "Reach";
         } else {
-            return "REACHES"
+            return "Reaches"
         }
-    } else if(graph === "impressions_count"){
-        if(maxLikes ===1) {
-            return "IMPRESSION";
+    } else if (graph === "impressions_count") {
+        if (max === 1) {
+            return "Impression";
         } else {
-            return "IMPRESSIONS"
+            return "Impressions"
         }
+    }
+}
+
+function displayTitle(graph) {
+    if (graph === "like_count") {
+        return "Most Liked Post"
+    } else if (graph === "comments_count") {
+        return "Most Commented Post"
+    } else if (graph === "reach_count") {
+        return "Most Reached Post"
+    } else if (graph === "impressions_count") {
+        return "Most Impressions Post"
+    }
+}
+
+function displayAvatar(graph){
+    if (graph === "like_count") {
+        return <ThumbsUpIcon/>;
+    } else if (graph === "comments_count") {
+        return <CommentIcon/>
+    } else if (graph === "reach_count") {
+        return
+    } else if (graph === "impressions_count") {
+        return
     }
 }
 
@@ -96,14 +122,16 @@ class MediaMostPopularCard extends React.Component {
         const {classes, theme, mediaData, graph} = this.props;
 
         let key;
-        let maxLikes = -1;
+        let max = -1;
         let maxIndex;
-        let obj;
+        let postImage;
+        let postDate;
 
-        for(key = 0; key < mediaData.length; key ++){
-            if(maxLikes < mediaData[key].data[mediaData[key].data.length - config.prediction - 1][graph]){
-                maxLikes = mediaData[key].data[mediaData[key].data.length - config.prediction - 1][graph];
-                obj = mediaData[key].imageURL;
+        for (key = 0; key < mediaData.length; key++) {
+            if (max < mediaData[key].data[mediaData[key].data.length - config.prediction - 1][graph]) {
+                max = mediaData[key].data[mediaData[key].data.length - config.prediction - 1][graph];
+                postImage = mediaData[key].imageURL;
+                postDate = mediaData[key].data[mediaData[key].data.length - config.prediction - 1].date;
                 maxIndex = key;
             }
         }
@@ -132,13 +160,35 @@ class MediaMostPopularCard extends React.Component {
             );
         }
 
-        let str = displayMessage(maxLikes, graph);
+        let str = displayMessage(max, graph);
+        let title = displayTitle(graph);
+
+        console.log("postDate", postDate[0]);
 
         return (
+
+
             <div>
-                <Card className={classes.card}
-                      image={mediaData.imageURL}
-                      title="Live from space album cover">
+                <Card className={classes.card}>
+                    <CardHeader
+                        avatar={
+                            <Avatar aria-label="Recipe" className={classes.avatar}>
+                                R
+                            </Avatar>
+                        }
+                        action={
+                            <IconButton>
+                                <MoreVertIcon />
+                            </IconButton>
+                        }
+                        title={title}
+                        subheader="DATE"
+                    />
+                    <CardMedia
+                        className={classes.media}
+                        image={postImage}
+                        title="Sup"
+                    />
                     <CardHeader
                         avatar={avatar}
                         action={
@@ -153,7 +203,6 @@ class MediaMostPopularCard extends React.Component {
                             </div>
                         }
                     />
-                    <SimplePopularPaperSheet maxLikes={maxLikes} message={str} color={theme.colorPrimary}/>
                 </Card>
             </div>
         );
